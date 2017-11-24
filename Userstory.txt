@@ -1,0 +1,26 @@
+1: Videopoker.	Värde: 5
+
+2: Satsa pengar. Värde: 2
+
+3: Spara tillgångar. Värde: 1
+
+4: Skapa användare. Värde: 13
+
+5: Texas hold em. Värde: 20
+
+Första delen: Skapa profil.
+
+Textbaserat.
+
+Laddning av spel
+Kolla om fil finns, skapa en annars
+
+Meny baserat.
+
+User story 4:		Projekterad tid: (2 - 4 timmar) 
+Skapa ett användareobjekt. Id, Namn, Lösen, Pengar, (Rank).
+(Arraylist med objekt)
+
+User Story 3:		Projekterad tid: (
+Skriva till fil, spara ner efter varje avslutat spel.
+
