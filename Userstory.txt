@@ -12,8 +12,9 @@ Första delen: Skapa profil.
 
 Textbaserat.
 
-Laddning av spel
+Laddning av spel 	Projeterad tid: (2 - 4 timmar)
 Kolla om fil finns, skapa en annars
+Finns fil, ladda användare
 
 Meny baserat.
 
@@ -21,6 +22,14 @@ User story 4:		Projekterad tid: (2 - 4 timmar)
 Skapa ett användareobjekt. Id, Namn, Lösen, Pengar, (Rank).
 (Arraylist med objekt)
 
-User Story 3:		Projekterad tid: (
+User Story 3:		Projekterad tid: (2 - 4 timmar)
 Skriva till fil, spara ner efter varje avslutat spel.
+
+User Story 1:
+Skapa kortlek.		Projekterad tid: (2 - 4 timmar)
+Blanda kortlek.		Projekterad tid: (0.1 timme)
+Skapa handobjekt.	Projekterad tid: (2 - 4 timmar)
+Dra fem kort.		Projekterad tid: (2 -4 timme)
+Välj X antal kort att kasta och dra nytt kort. Projekterad tid: (2 - 4 timmar)
+Beräkna vinst / förlust.	Projekterad tid: (2 timmar)
 
