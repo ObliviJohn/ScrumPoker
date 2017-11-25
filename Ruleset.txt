@@ -1,0 +1,44 @@
+﻿Ruleset #1 - Jacks or Better
+Alla händer med ett värde lägre än två knektar är en förlust.
+
+Royal Flush - 250x
+Straight Flush - 50x
+Four of a Kind - 25x
+Full House - 6x to 9x
+Flush - 5x or 6x
+Straight - 4x
+Three of a Kind - 3x
+Two Pair - 2x
+Pair of Jacks or Better - 1x
+
+
+Ruleset #2 - Tva ar wildcard
+Alla tvåor är wildcard och kan räknas som vad som helst.
+Lättare att få stora händer darav lägre vinster,
+
+Royal Flush (no wild cards) - 250x
+Four Deuces - 200x
+Royal Flush (with wild cards) - 20x or 25x
+Five of a Kind - 12x to 16x
+Straight Flush - 8x to 10x
+Four of a Kind - 4x or 5x
+Full House - 3x or 4x
+Flush - 2x or 3x
+Straight - 2x
+Three of a Kind - 1x
+
+
+Ruleset #3 - Joker
+Standard regler men med en joker tillagd i leken som är wildcard
+
+Royal Flush (no joker) - 250x
+Five of a Kind - 200x
+Royal Flush (with joker) - 100x
+Straight Flush - 40x or 50x
+Four of a Kind - 15x to 20x
+Full House - 5x to 8x
+Flush - 5x
+Straight - 3x
+Three of a Kind - 2x
+Two Pair - 1x
+One Pair kings or better - 1x
