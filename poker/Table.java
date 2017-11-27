@@ -44,38 +44,33 @@ public class Table {
 		return details;
 	}
 
-	private JPanel gameTable() {
-		
-		Border blackline = BorderFactory.createLineBorder(Color.BLACK);
-		
-		JPanel leftPlayer = new JPanel();
-		JPanel topPlayer = new JPanel();
-		JPanel rightPlayer = new JPanel();
-		JPanel bottomPlayer = new JPanel();
-		
-		leftPlayer.setBorder(blackline);
-		rightPlayer.setBorder(blackline);
-		topPlayer.setBorder(blackline);
-		bottomPlayer.setBorder(blackline);
-		
-		leftPlayer.setPreferredSize(new Dimension(100,600));
-		rightPlayer.setPreferredSize(new Dimension(100,600));
-		topPlayer.setPreferredSize(new Dimension(400,100));
-		bottomPlayer.setPreferredSize(new Dimension(800,100));		
-		
-		Color background = Color.decode("#076324");
-		
+	private JPanel gameTable() {		
 		table.setLayout(new BorderLayout());
-		table.add(rightPlayer, BorderLayout.EAST);
-		table.add(topPlayer, BorderLayout.PAGE_START);
-		table.add(leftPlayer, BorderLayout.WEST);
-		table.add(bottomPlayer, BorderLayout.PAGE_END);
+		table.add(sidePlayer(), BorderLayout.EAST);
+		table.add(horizontalPlayer(), BorderLayout.PAGE_START);
+		table.add(sidePlayer(), BorderLayout.WEST);
+		table.add(horizontalPlayer(), BorderLayout.PAGE_END);
 		table.add(center(), BorderLayout.CENTER);
 				
 		table.setPreferredSize(new Dimension(1400,900));
-		table.setBackground(background);
 		
 		return table;
+	}
+
+	private Component horizontalPlayer() {
+		JPanel panel = new JPanel();
+		panel.setPreferredSize(new Dimension(400,100));
+		Color background = Color.decode("#076324");
+		panel.setBackground(background);
+		return panel;
+	}
+
+	private Component sidePlayer() {
+		JPanel panel = new JPanel();
+		Color background = Color.decode("#076324");
+		panel.setPreferredSize(new Dimension(100, 600));
+		panel.setBackground(background);
+		return panel;
 	}
 
 	private JComponent center() {
@@ -89,9 +84,11 @@ public class Table {
 		gbc.gridy = 1;
 		welcome.setFont(f);
 		panel.add(welcome, gbc);
+		
 		gbc.gridx = 5;
 		gbc.gridy = 2;
 		poker.setFont(f);
+		
 		panel.add(poker, gbc);
 		panel.setBackground(Color.decode("#076324"));
 		return panel;
