@@ -14,7 +14,8 @@ public class Table {
 	private JPanel table = new JPanel();
 	private JPanel details = new JPanel();
 	
-	private JLabel welcome = new JLabel("POKER GAME");
+	private JLabel welcome = new JLabel("WELCOME TO");
+	private JLabel poker = new JLabel("ALEX POKER GAME");
 	
 	public Table(Controller controller) {
 		this.controller = controller;
@@ -69,13 +70,30 @@ public class Table {
 		table.add(topPlayer, BorderLayout.PAGE_START);
 		table.add(leftPlayer, BorderLayout.WEST);
 		table.add(bottomPlayer, BorderLayout.PAGE_END);
-		
-		table.add(welcome, BorderLayout.CENTER);
-		
+		table.add(center(), BorderLayout.CENTER);
+				
 		table.setPreferredSize(new Dimension(1400,900));
 		table.setBackground(background);
 		
 		return table;
 	}
 
+	private JComponent center() {
+		JPanel panel = new JPanel();
+		panel.setLayout(new GridBagLayout());
+		
+		Font f = new Font("serif", Font.BOLD, 54);
+		
+		GridBagConstraints gbc = new GridBagConstraints();
+		gbc.gridx = 5;
+		gbc.gridy = 1;
+		welcome.setFont(f);
+		panel.add(welcome, gbc);
+		gbc.gridx = 5;
+		gbc.gridy = 2;
+		poker.setFont(f);
+		panel.add(poker, gbc);
+		panel.setBackground(Color.decode("#076324"));
+		return panel;
+	}
 }
