@@ -1,8 +1,8 @@
 package poker;
 
 import java.awt.*;
-import java.util.List;
-import java.util.ArrayList;
+import java.awt.event.ActionListener;
+
 import javax.swing.*;
 
 public class Table {
@@ -13,7 +13,9 @@ public class Table {
 	private Container container = new Container();
 
 	private JPanel table = new JPanel();
-	private JPanel details = new JPanel();
+	private JPanel details;
+	
+	private	JButton account = new JButton("Account");
 		
 	public Table(Controller controller) {
 		this.controller = controller;
@@ -31,14 +33,109 @@ public class Table {
 		
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.pack();
+		frame.setResizable(false);
 		frame.setVisible(true);
 		
 	}
 
+	public void account(ActionListener act) {
+		account.addActionListener(act);
+	}
+	
 	private Component details() {
+		details = new JPanel(new SpringLayout());
 		Color background = Color.LIGHT_GRAY;
-		details.setPreferredSize(new Dimension(400, 400));
+		JLabel cardsPlayed = new JLabel("Cards played:");
+		JLabel cardsRemaining = new JLabel("Cards left in deck:");
+		JLabel cardsPlayedNumber = new JLabel("13");
+		JLabel cardsRemainingNumber = new JLabel("39");
+		JLabel possibilityForAce = new JLabel("Possibility for Ace: ");
+		JLabel percentageForAce = new JLabel("7.69%");
+		JLabel possibilityForPair = new JLabel("Possibility for Pair: ");
+		JLabel percentageForPair = new JLabel("100%");
+		JLabel possibilityForTwoPairs = new JLabel("Possibility for Two pairs: ");
+		JLabel percentageForTwoPairs = new JLabel("88%");
+		JLabel possibilityForRoyalStraightFlush = new JLabel("Possibility for Royal Straight Flush: ");
+		JLabel percentageForRoyalStraightFlush = new JLabel("0%");
+		JLabel possibilityForDeadMansHand = new JLabel("Possibility for Dead Mans Hand: ");
+		JLabel percentageForDeadMansHand = new JLabel("72%");
+		JLabel possibilityForStraight = new JLabel("Possibility for a Straight: ");
+		JLabel percentageForStraight = new JLabel("45%");
+		JLabel possibilityForTrice = new JLabel("Possibility for Three of a kind: ");
+		JLabel percentageForTrice = new JLabel("90%");
+		JLabel possibilityForQuartal = new JLabel("Possibility for Four of a kind: ");
+		JLabel percentageForQuartal = new JLabel("10%");
+		JLabel possibilityForThreePairs = new JLabel("Possibility for Three pairs: ");
+		JLabel percentageForThreePairs = new JLabel("48%");
+		JLabel pot = new JLabel("Pot: $5");
+		JTextField amount = new JTextField();
+		
+		
+		JButton bet = new JButton("Bet");
+		JButton stand = new JButton("Stand");
+		JButton allIn = new JButton("All In");
+		
+		Font font = new Font("serif", Font.BOLD, 24);
+		cardsPlayed.setFont(font);
+		cardsRemaining.setFont(font);
+		cardsPlayedNumber.setFont(font);
+		cardsRemainingNumber.setFont(font);
+		possibilityForAce.setFont(font);
+		percentageForAce.setFont(font);
+		possibilityForPair.setFont(font);
+		percentageForPair.setFont(font);
+		possibilityForTwoPairs.setFont(font);
+		percentageForTwoPairs.setFont(font);
+		possibilityForThreePairs.setFont(font);
+		percentageForThreePairs.setFont(font);
+		possibilityForStraight.setFont(font);
+		percentageForStraight.setFont(font);
+		possibilityForTrice.setFont(font);
+		percentageForTrice.setFont(font);
+		possibilityForQuartal.setFont(font);
+		percentageForQuartal.setFont(font);
+		possibilityForDeadMansHand.setFont(font);
+		percentageForDeadMansHand.setFont(font);
+		possibilityForRoyalStraightFlush.setFont(font);
+		percentageForRoyalStraightFlush.setFont(font);
+		pot.setFont(font);
+		
+		details.add(cardsPlayed);
+		details.add(cardsPlayedNumber);
+		details.add(cardsRemaining);
+		details.add(cardsRemainingNumber);
+		details.add(possibilityForAce);
+		details.add(percentageForAce);
+		details.add(possibilityForPair);
+		details.add(percentageForPair);
+		details.add(possibilityForTwoPairs);
+		details.add(percentageForTwoPairs);
+		details.add(possibilityForThreePairs);
+		details.add(percentageForThreePairs);
+		details.add(possibilityForQuartal);
+		details.add(percentageForQuartal);
+		details.add(possibilityForStraight);
+		details.add(percentageForStraight);
+		details.add(possibilityForTrice);
+		details.add(percentageForTrice);
+		details.add(possibilityForDeadMansHand);
+		details.add(percentageForDeadMansHand);
+		details.add(possibilityForRoyalStraightFlush);
+		details.add(percentageForRoyalStraightFlush);
+
+		details.add(bet);
+		details.add(amount);
+		
+		details.add(allIn);
+		details.add(stand);
+		
+		details.add(pot);
+		details.add(account);
+
+		details.setPreferredSize(new Dimension(500, 200));
 		details.setBackground(background);
+		SpringUtilities.makeCompactGrid(details, 14, 2, 2, 2, 3, 35);
+		details.setOpaque(true);
 		return details;
 	}
 
