@@ -41,7 +41,7 @@ public class Deck {
 		public static void main(String[] args) {
 			Deck deck = new Deck();
 			deck.draw();
-			System.out.println("HEj");
+			System.out.println("Hej");
 			System.out.println(deck.draw());
 			
 			
