@@ -1,25 +1,28 @@
-package scrum;
+package videopoker;
 
 import java.util.ArrayList;
 
 public class Hand {
-	private ArrayList<Card>currentHand;
-	private ArrayList<Card>trash;
+	private ArrayList<Card>currentHand = new ArrayList<Card>();
+	private ArrayList<Card>trash = new ArrayList<Card>();
 
 	Deck d = new Deck();	
 	
 	public void fill(){
-		for(;currentHand.size < 5;){
+		while(currentHand.size() < 5){
 			currentHand.add(d.draw());
 		}
 	}
-	public void add(){
-		currentHand(d.draw());
+	public void plusOne(){
+		currentHand.add(d.draw());
 
 	}	
 	public void discard(int i){
-		currentHand.remove(i - 1);
-		trash.add(i - 1);
+		currentHand.remove(currentHand.get(i - 1));
+		trash.add(currentHand.get(i - 1));
 	}
-	
+	public ArrayList<Card> showHand(){
+		return currentHand;
+	}
+
 }
