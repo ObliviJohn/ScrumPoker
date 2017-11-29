@@ -29,6 +29,7 @@ public class Controller {
 	}
 
 	class accountListener implements ActionListener {
+		@Override
 		public void actionPerformed(ActionEvent e) {
 			Account acc = new Account();
 			acc.start();
@@ -36,6 +37,7 @@ public class Controller {
 	}
 
 	class cardOne implements ActionListener {
+		@Override
 		public void actionPerformed(ActionEvent e) {
 			JButton b = (JButton) e.getSource();
 			if (b.getBackground() == Color.RED) {
@@ -47,6 +49,7 @@ public class Controller {
 	}
 
 	class cardTwo implements ActionListener {
+		@Override
 		public void actionPerformed(ActionEvent e) {
 			JButton b = (JButton) e.getSource();
 			if (b.getBackground() == Color.RED) {
@@ -58,6 +61,7 @@ public class Controller {
 	}
 
 	class cardThree implements ActionListener {
+		@Override
 		public void actionPerformed(ActionEvent e) {
 			JButton b = (JButton) e.getSource();
 			if (b.getBackground() == Color.RED) {
@@ -69,6 +73,7 @@ public class Controller {
 	}
 
 	class cardFour implements ActionListener {
+		@Override
 		public void actionPerformed(ActionEvent e) {
 			JButton b = (JButton) e.getSource();
 			if (b.getBackground() == Color.RED) {
@@ -80,6 +85,7 @@ public class Controller {
 	}
 
 	class cardFive implements ActionListener {
+		@Override
 		public void actionPerformed(ActionEvent e) {
 			JButton b = (JButton) e.getSource();
 			if (b.getBackground() == Color.RED) {
@@ -91,6 +97,7 @@ public class Controller {
 	}
 
 	class draw implements ActionListener {
+		@Override
 		public void actionPerformed(ActionEvent e) {
 			for (int i = 0; i < testStats.length; i++) {
 				testStats[i] = 10;

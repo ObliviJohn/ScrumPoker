@@ -1,3 +1,5 @@
+package src;
+
 public class User {
     private int id, money;
     private String name, password;
