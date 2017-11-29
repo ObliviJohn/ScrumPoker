@@ -4,8 +4,6 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
@@ -17,6 +15,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 import javax.swing.border.Border;
 
 public class VideopokerView {
@@ -29,12 +29,13 @@ public class VideopokerView {
 	private JButton cardThree = new JButton();
 	private JButton cardFour = new JButton();
 	private JButton cardFive = new JButton();
+	private JButton account = new JButton("Account");
 	private JButton draw = new JButton();
 	private JLabel[] info = new JLabel[24];
 	private JLabel[] cards = new JLabel[5];
 	
 	public void init() {
-		frame.setPreferredSize(new Dimension(1280, 720));
+		frame.setPreferredSize(new Dimension(1000, 620));
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.pack();
@@ -44,6 +45,20 @@ public class VideopokerView {
 		container.setLayout(new GridLayout(2, 1));
 		container.add(topLevel());
 		container.add(stats());
+		
+		createUser();
+	}
+
+	private void createUser() {
+		JPanel panel = new JPanel();
+		panel.setPreferredSize(new Dimension(500,250));
+		panel.setLayout(new GridLayout(2,2));
+		JLabel login = new JLabel("Loginname:");
+		JLabel pass = new JLabel("Password:");
+		JPasswordField pw = new JPasswordField(10);
+		JTextField tf = new JTextField(10);
+		panel.add(login);
+		panel.add(tf);
 	}
 
 	private Component stats() {
@@ -94,7 +109,7 @@ public class VideopokerView {
 				info[i].setText("");
 				break;
 			default:
-				info[i].setText("Box: " + i);
+				info[i].setText("");
 				break;
 			}
 			panel.add(info[i]);
@@ -136,47 +151,55 @@ public class VideopokerView {
 		gbc.gridy = 1;
 		gbc.gridx = 1;
 		gbc.insets = new Insets(10, 10, 0, 0);
-		cardOne.setPreferredSize(new Dimension(50, 20));
+		cardOne.setPreferredSize(new Dimension(100, 30));
 		cardOne.setText("Discard");
 		panel.add(cardOne, gbc);
 		
 		gbc.gridy = 1;
 		gbc.gridx = 2;
 		gbc.insets = new Insets(10,10,0,0);
-	    cardTwo.setPreferredSize(new Dimension(50, 20));
+	    cardTwo.setPreferredSize(new Dimension(100, 30));
 	    cardTwo.setText("Discard");
 	    panel.add(cardTwo, gbc);
 	    
 		gbc.gridy = 1;
 		gbc.gridx = 3;
 		gbc.insets = new Insets(10,10,0,0);
-	    cardThree.setPreferredSize(new Dimension(50, 20));
+	    cardThree.setPreferredSize(new Dimension(100, 30));
 	    cardThree.setText("Discard");
 	    panel.add(cardThree, gbc);
 	    
 		gbc.gridy = 1;
 		gbc.gridx = 4;
 		gbc.insets = new Insets(10,10,0,0);
-	    cardFour.setPreferredSize(new Dimension(50, 20));
+	    cardFour.setPreferredSize(new Dimension(100, 30));
 	    cardFour.setText("Discard");
 	    panel.add(cardFour, gbc);
 	    
 		gbc.gridy = 1;
 		gbc.gridx = 5;
 		gbc.insets = new Insets(10,10,0,0);
-	    cardFive.setPreferredSize(new Dimension(50, 20));
+	    cardFive.setPreferredSize(new Dimension(100, 30));
 	    cardFive.setText("Discard");
 	    panel.add(cardFive, gbc);
 	    
 		gbc.gridy = 1;
-		gbc.gridx = 6;
-		gbc.insets = new Insets(10,100,0,0);
-	    draw.setPreferredSize(new Dimension(50, 20));
-	    draw.setText("Discard");
+		gbc.gridx = 10;
+		gbc.insets = new Insets(10,90,0,0);
+	    draw.setPreferredSize(new Dimension(100, 30));
+	    draw.setText("Draw");
 	    panel.add(draw, gbc);
+	    
+	    gbc.gridy = 3;
+	    gbc.gridx = 14;
+	    account.setPreferredSize(new Dimension(100, 40));
+	    panel.add(account, gbc);
 
-		panel.setPreferredSize(new Dimension(1280, 360));
 		return panel;
+	}
+	
+	public void setColor(int pressed) {
+		
 	}
 	
 	public void cardOne(ActionListener act) {
