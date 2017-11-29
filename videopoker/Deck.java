@@ -6,7 +6,6 @@ import java.util.List;
 
 import videopoker.Card;
 
-
 public class Deck {
 	public List<Card> cards;
 
@@ -38,12 +37,12 @@ public class Deck {
 			Collections.shuffle(cards);
 		}
 		
-		public static void main(String[] args) {
-			Deck deck = new Deck();
-			deck.draw();
-			System.out.println("Hej");
-			System.out.println(deck.draw());
-			
-			
-		}
+//		public static void main(String[] args) {
+//			Deck deck = new Deck();
+//			deck.draw();
+//			System.out.println("Hej");
+//			System.out.println(deck.draw());
+//			
+//			
+//		}
 }
