@@ -1,7 +1,10 @@
 package poker;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
 
 public class Controller {
 
@@ -35,6 +38,13 @@ public class Controller {
 	class cardOne implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			System.out.println("Card 1");
+
+			JButton b = (JButton) e.getSource();
+			
+			System.out.println(b.getBackground());
+			b.setBackground(new Color(238, 238, 238));
+			b.setBorderPainted(false);
+//			b.setOpaque(!b.isOpaque());
 		}
 	}
 
