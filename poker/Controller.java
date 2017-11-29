@@ -6,63 +6,69 @@ import java.awt.event.ActionListener;
 public class Controller {
 
 	private Table table;
-	private VideopokerView videoPokerView;
+	private VideopokerView vpv;
+	
+//	Just an array for testing setting stats
+	private int[] testStats = new int[10];
 
 	public void init() {
 		// table = new Table(this);
 		// table.showTable();
 		// table.account(new accountListener());
-		videoPokerView = new VideopokerView();
-		videoPokerView.init();
-		videoPokerView.cardOne(new cardOne());
-		videoPokerView.cardTwo(new cardTwo());
-		videoPokerView.cardThree(new cardThree());
-		videoPokerView.cardFour(new cardFour());
-		videoPokerView.cardFive(new cardFive());
-		videoPokerView.draw(new draw());
+		vpv = new VideopokerView();
+		vpv.init();
+		vpv.cardOne(new cardOne());
+		vpv.cardTwo(new cardTwo());
+		vpv.cardThree(new cardThree());
+		vpv.cardFour(new cardFour());
+		vpv.cardFive(new cardFive());
+		vpv.draw(new draw());
 	}
-}
 
-class accountListener implements ActionListener {
-	public void actionPerformed(ActionEvent e) {
-		Account acc = new Account();
-		acc.start();
+	class accountListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			Account acc = new Account();
+			acc.start();
+		}
 	}
-}
 
-class cardOne implements ActionListener {
-	public void actionPerformed(ActionEvent e) {
-		System.out.println("Card 1");
+	class cardOne implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			System.out.println("Card 1");
+		}
 	}
-}
 
-class cardTwo implements ActionListener {
-	public void actionPerformed(ActionEvent e) {
-		System.out.println("Card 2");
+	class cardTwo implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			System.out.println("Card 2");
+		}
 	}
-}
 
-class cardThree implements ActionListener {
-	public void actionPerformed(ActionEvent e) {
-		System.out.println("Card 3");
+	class cardThree implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			System.out.println("Card 3");
+		}
 	}
-}
 
-class cardFour implements ActionListener {
-	public void actionPerformed(ActionEvent e) {
-		System.out.println("Card 4");
-		
+	class cardFour implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			System.out.println("Card 4");
+
+		}
 	}
-}
 
-class cardFive implements ActionListener {
-	public void actionPerformed(ActionEvent e) {
-		System.out.println("Card 5");
+	class cardFive implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			System.out.println("Card 5");
+		}
 	}
-}
 
-class draw implements ActionListener {
-	public void actionPerformed(ActionEvent e) {
-		System.out.println("Draw");
+	class draw implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			for ( int i = 0; i < testStats.length; i++) {
+				testStats[i] = 10;
+			}
+			vpv.setStats(testStats);
+		}
 	}
 }

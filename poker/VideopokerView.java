@@ -30,7 +30,9 @@ public class VideopokerView {
 	private JButton cardFour = new JButton();
 	private JButton cardFive = new JButton();
 	private JButton draw = new JButton();
-	private JLabel info;
+	private JLabel[] info = new JLabel[24];
+	private JLabel[] cards = new JLabel[5];
+	
 	public void init() {
 		frame.setPreferredSize(new Dimension(1280, 720));
 		frame.setVisible(true);
@@ -47,57 +49,68 @@ public class VideopokerView {
 	private Component stats() {
 		JPanel panel = new JPanel();
 		String[] hands = { "High card: " , "Pair: " , "Two pairs: " , "Three of a kind: " , "Straight: " ,
-						  "Flush: ", "Full house: " , "Four of a kind: " , "Straight Flush: " , "Royal Flush: " , };
+						  "Flush: ", "Full house: " , "Four of a kind: " , "Straight Flush: " , "Royal Flush: "};
 
 		panel.setLayout(new GridLayout(3,8));
 		
 		for ( int i = 0; i < 24; i++) {
-			info = new JLabel();
-			info.setSize(new Dimension(150, 30));
+			info[i] = new JLabel();
+			info[i].setSize(new Dimension(150, 30));
 			switch(i) {
 			case 0:
-				info.setText(hands[0]);
+				info[i].setText(hands[0]);
 				break;
 			case 2:
-				info.setText(hands[3]);
+				info[i].setText(hands[3]);
 				break;
 			case 4:
-				info.setText(hands[6]);
+				info[i].setText(hands[6]);
 				break;
 			case 6:
-				info.setText(hands[9]);
+				info[i].setText(hands[9]);
 				break;
 			case 8:
-				info.setText(hands[1]);
+				info[i].setText(hands[1]);
 				break;
 			case 10:
-				info.setText(hands[4]);
+				info[i].setText(hands[4]);
 				break;
 			case 12:
-				info.setText(hands[7]);
+				info[i].setText(hands[7]);
 				break;
 			case 14:
-				info.setText("Players name");
+				info[i].setText("Players name");
 				break;
 			case 16:
-				info.setText(hands[2]);
+				info[i].setText(hands[2]);
 				break;
 			case 18:
-				info.setText(hands[5]);
+				info[i].setText(hands[5]);
 				break;
 			case 20:
-				info.setText(hands[8]);
+				info[i].setText(hands[8]);
 				break;
 			case 15: case 22: case 23:
-				info.setText("");
+				info[i].setText("");
 				break;
 			default:
-				info.setText("0 %");
+				info[i].setText("Box: " + i);
 				break;
 			}
-			panel.add(info);
+			panel.add(info[i]);
 		}
 		return panel;
+	}
+	
+	public void setStats(int[] testStats) {
+		int pos = 1;
+		for ( int i = 0; i < testStats.length; i++ ) {
+			info[pos].setText(testStats[i] + "%");
+			pos += 2;
+			if ( pos == 15 ) {
+				pos += 2;
+			}
+		}
 	}
 
 	private Component topLevel() {
@@ -109,15 +122,15 @@ public class VideopokerView {
 		panel.setLayout(new GridBagLayout());
 		GridBagConstraints gbc = new GridBagConstraints();
 
-		for (int i = 1; i < 6; i++) {
+		for (int i = 0; i < 5; i++) {
 			gbc.gridy = 0;
-			gbc.gridx = i;
+			gbc.gridx = i + 1;
 			gbc.insets = new Insets(0, 10, 0, 0);
-			JLabel card = new JLabel();
-			card.setPreferredSize(new Dimension(100, 145));
-			card.setBorder(border);
-			card.setText("Card " + i);
-			panel.add(card, gbc);
+			cards[i] = new JLabel();
+			cards[i].setPreferredSize(new Dimension(100, 145));
+			cards[i].setBorder(border);
+			cards[i].setText("Card " + i);
+			panel.add(cards[i], gbc);
 		}
 
 		gbc.gridy = 1;
