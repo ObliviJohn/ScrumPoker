@@ -1,5 +1,3 @@
-package src;
-
 public class Card {
     private int value;
     private Suit suit;
