@@ -17,7 +17,6 @@ public class Controller {
 	public void init() {
 		// table = new Table(this);
 		// table.showTable();
-		// table.account(new accountListener());
 		vpv = new VideopokerView();
 		vpv.init();
 		vpv.cardOne(new cardOne());
@@ -26,10 +25,10 @@ public class Controller {
 		vpv.cardFour(new cardFour());
 		vpv.cardFive(new cardFive());
 		vpv.draw(new draw());
+		vpv.account(new accountListener());
 	}
 
 	class accountListener implements ActionListener {
-		@Override
 		public void actionPerformed(ActionEvent e) {
 			Account acc = new Account();
 			acc.start();
@@ -37,7 +36,6 @@ public class Controller {
 	}
 
 	class cardOne implements ActionListener {
-		@Override
 		public void actionPerformed(ActionEvent e) {
 			JButton b = (JButton) e.getSource();
 			if (b.getBackground() == Color.RED) {
@@ -49,7 +47,6 @@ public class Controller {
 	}
 
 	class cardTwo implements ActionListener {
-		@Override
 		public void actionPerformed(ActionEvent e) {
 			JButton b = (JButton) e.getSource();
 			if (b.getBackground() == Color.RED) {
@@ -61,7 +58,6 @@ public class Controller {
 	}
 
 	class cardThree implements ActionListener {
-		@Override
 		public void actionPerformed(ActionEvent e) {
 			JButton b = (JButton) e.getSource();
 			if (b.getBackground() == Color.RED) {
@@ -73,7 +69,6 @@ public class Controller {
 	}
 
 	class cardFour implements ActionListener {
-		@Override
 		public void actionPerformed(ActionEvent e) {
 			JButton b = (JButton) e.getSource();
 			if (b.getBackground() == Color.RED) {
@@ -85,7 +80,6 @@ public class Controller {
 	}
 
 	class cardFive implements ActionListener {
-		@Override
 		public void actionPerformed(ActionEvent e) {
 			JButton b = (JButton) e.getSource();
 			if (b.getBackground() == Color.RED) {
@@ -97,7 +91,6 @@ public class Controller {
 	}
 
 	class draw implements ActionListener {
-		@Override
 		public void actionPerformed(ActionEvent e) {
 			for (int i = 0; i < testStats.length; i++) {
 				testStats[i] = 10;

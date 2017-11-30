@@ -19,6 +19,8 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
 
+import poker.Controller.accountListener;
+
 public class VideopokerView {
 
 	private JFrame frame = new JFrame();
@@ -46,19 +48,6 @@ public class VideopokerView {
 		container.add(topLevel());
 		container.add(stats());
 		
-		createUser();
-	}
-
-	private void createUser() {
-		JPanel panel = new JPanel();
-		panel.setPreferredSize(new Dimension(500,250));
-		panel.setLayout(new GridLayout(2,2));
-		JLabel login = new JLabel("Loginname:");
-		JLabel pass = new JLabel("Password:");
-		JPasswordField pw = new JPasswordField(10);
-		JTextField tf = new JTextField(10);
-		panel.add(login);
-		panel.add(tf);
 	}
 
 	private Component stats() {
@@ -224,5 +213,9 @@ public class VideopokerView {
 	
 	public void draw(ActionListener act) {
 		draw.addActionListener(act);
+	}
+
+	public void account(ActionListener act) {
+		account.addActionListener(act);
 	}
 }
