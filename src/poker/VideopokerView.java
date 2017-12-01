@@ -137,35 +137,35 @@ public class VideopokerView {
 		gbc.gridx = 1;
 		gbc.insets = new Insets(10, 10, 0, 0);
 		cardOne.setPreferredSize(new Dimension(100, 30));
-		cardOne.setText("Discard");
+		cardOne.setText("Hold");
 		panel.add(cardOne, gbc);
 		
 		gbc.gridy = 1;
 		gbc.gridx = 2;
 		gbc.insets = new Insets(10,10,0,0);
 	    cardTwo.setPreferredSize(new Dimension(100, 30));
-	    cardTwo.setText("Discard");
+	    cardTwo.setText("Hold");
 	    panel.add(cardTwo, gbc);
 	    
 		gbc.gridy = 1;
 		gbc.gridx = 3;
 		gbc.insets = new Insets(10,10,0,0);
 	    cardThree.setPreferredSize(new Dimension(100, 30));
-	    cardThree.setText("Discard");
+	    cardThree.setText("Hold");
 	    panel.add(cardThree, gbc);
 	    
 		gbc.gridy = 1;
 		gbc.gridx = 4;
 		gbc.insets = new Insets(10,10,0,0);
 	    cardFour.setPreferredSize(new Dimension(100, 30));
-	    cardFour.setText("Discard");
+	    cardFour.setText("Hold");
 	    panel.add(cardFour, gbc);
 	    
 		gbc.gridy = 1;
 		gbc.gridx = 5;
 		gbc.insets = new Insets(10,10,0,0);
 	    cardFive.setPreferredSize(new Dimension(100, 30));
-	    cardFive.setText("Discard");
+	    cardFive.setText("Hold");
 	    panel.add(cardFive, gbc);
 	    
 		gbc.gridy = 1;

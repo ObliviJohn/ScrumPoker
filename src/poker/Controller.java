@@ -33,7 +33,7 @@ public class Controller {
 
 	class accountListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			acc = new Account();
+			Account acc = new Account();
 			JButton b = (JButton)e.getSource();
 			acc.start(b);
 			b.setEnabled(false);
@@ -47,59 +47,45 @@ public class Controller {
 
 	class cardOne implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			JButton b = (JButton) e.getSource();
-			if (b.getBackground() == Color.RED) {
-				b.setBackground(new Color(238,238,238));
-			} else {
-				b.setBackground(Color.RED);
-			}
+			cardButton(e);
 		}
 	}
 
 	class cardTwo implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			JButton b = (JButton) e.getSource();
-			if (b.getBackground() == Color.RED) {
-				b.setBackground(new Color(238,238,238));
-			} else {
-				b.setBackground(Color.RED);
-			}
+			cardButton(e);
 		}
 	}
 
 	class cardThree implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			JButton b = (JButton) e.getSource();
-			if (b.getBackground() == Color.RED) {
-				b.setBackground(new Color(238,238,238));
-			} else {
-				b.setBackground(Color.RED);
-			}
+			cardButton(e);
 		}
 	}
 
 	class cardFour implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			JButton b = (JButton) e.getSource();
-			if (b.getBackground() == Color.RED) {
-				b.setBackground(new Color(238,238,238));
-			} else {
-				b.setBackground(Color.RED);
-			}
+			cardButton(e);
 		}
 	}
 
 	class cardFive implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			JButton b = (JButton) e.getSource();
-			if (b.getBackground() == Color.RED) {
-				b.setBackground(new Color(238,238,238));
-			} else {
-				b.setBackground(Color.RED);
-			}
+			cardButton(e);
 		}
 	}
+	public void cardButton(ActionEvent e) {
 
+		JButton b = (JButton) e.getSource();
+		if (b.getBackground() == Color.RED) {
+			b.setBackground(new Color(238,238,238));
+			b.setText("Hold");
+		} else {
+			b.setBackground(Color.RED);
+			b.setText("Discard");
+		}
+	
+	}
 	class draw implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			for (int i = 0; i < testStats.length; i++) {
@@ -111,17 +97,17 @@ public class Controller {
 	class accountSignIn implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 
-System.out.println(acc.getUsernameField());
+System.out.println("Stille natt");
 		}
 	}
 	class accountCreateNew implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-System.out.println(acc.getPasswordField());
+System.out.println("Staffan hade en stalledräng");
 		}
 	}
 	class accountAddFunds implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-System.out.println(acc.getFundsField());
+System.out.println("God dag");
 		}
 	}
 
