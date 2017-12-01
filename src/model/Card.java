@@ -1,6 +1,4 @@
-package videopoker;
-
-import videopoker.Suits;
+package model;
 
 public class Card {
 	private int value;

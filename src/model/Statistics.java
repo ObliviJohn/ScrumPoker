@@ -1,4 +1,4 @@
-package videopoker;
+package model;
 
 
 public class Statistics {
