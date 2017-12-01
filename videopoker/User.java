@@ -2,12 +2,8 @@ package videopoker;
 
 import java.io.Serializable;
 
-import javax.swing.JPasswordField;
-
-public class User implements Serializable{
-	
+public class User implements Serializable {
 	private int money;
-	private int id;
 	private String name;
 	private String password;
 	
@@ -15,10 +11,9 @@ public class User implements Serializable{
 	public User() {
 		
 	}
-	public User(int money, int id, String name, String password) {
+	public User(int money,  String name, String password) {
 		super();
-		this.money = money;
-		this.id = id;
+		this.money = money;	
 		this.name = name;
 		this.password = password;
 	}
@@ -31,16 +26,6 @@ public class User implements Serializable{
 
 	public void setMoney(int money) {
 		this.money = money;
-	}
-
-
-	public int getId() {
-		return id;
-	}
-
-
-	public void setId(int id) {
-		this.id = id;
 	}
 
 
@@ -62,25 +47,10 @@ public class User implements Serializable{
 		this.password = password;
 	}
 
-
-	public void hidePassword() {
-		JPasswordField jpass1 = new JPasswordField();
-		jpass1.setEchoChar('*');
-	}
-	
-	public void saveUser() {
-		
-	}
-	
 	@Override
 	public String toString() {
-		return "User [money=" + money + ", id=" + id + ","
+		return "User [money=" + money  + ","
 				+ " name=" + name + ", password=" + password + "]\n";
 	}
 	
-	public static void main(String[] args) {
-		User user1 = new User(20000, 4, "password", "Nisse");
-		
-		System.out.println(user1.toString());
-	}
 }
