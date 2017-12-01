@@ -15,11 +15,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JPasswordField;
-import javax.swing.JTextField;
 import javax.swing.border.Border;
-
-import poker.Controller.accountListener;
 
 public class VideopokerView {
 
@@ -185,10 +181,6 @@ public class VideopokerView {
 	    panel.add(account, gbc);
 
 		return panel;
-	}
-	
-	public void setColor(int pressed) {
-		
 	}
 	
 	public void cardOne(ActionListener act) {

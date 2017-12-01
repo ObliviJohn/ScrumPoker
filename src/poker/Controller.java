@@ -10,6 +10,7 @@ public class Controller {
 
 	private Table table;
 	private VideopokerView vpv;
+	private Account acc;
 
 	// Just an array for testing setting stats
 	private int[] testStats = new int[10];
@@ -26,12 +27,21 @@ public class Controller {
 		vpv.cardFive(new cardFive());
 		vpv.draw(new draw());
 		vpv.account(new accountListener());
+		
+
 	}
 
 	class accountListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			Account acc = new Account();
-			acc.start();
+			acc = new Account();
+			JButton b = (JButton)e.getSource();
+			acc.start(b);
+			b.setEnabled(false);
+			
+
+			acc.signInListen(new accountSignIn());
+			acc.createNewListen(new accountCreateNew());
+			acc.addFundsListen(new accountAddFunds());
 		}
 	}
 
@@ -98,4 +108,25 @@ public class Controller {
 			vpv.setStats(testStats);
 		}
 	}
+	class accountSignIn implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+
+System.out.println(acc.getUsernameField());
+		}
+	}
+	class accountCreateNew implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+System.out.println(acc.getPasswordField());
+		}
+	}
+	class accountAddFunds implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+System.out.println(acc.getFundsField());
+		}
+	}
+
+
+
+
+
 }
