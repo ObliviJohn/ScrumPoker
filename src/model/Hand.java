@@ -44,11 +44,13 @@ public class Hand {
 	}
 	
 	public String eval(){
-		ArrayList<Integer>av   = new ArrayList<Integer>();	//h?øΩr l?øΩggs alla v?øΩrden
-		ArrayList<Integer>uv   = new ArrayList<Integer>();	//h?øΩr l?øΩggs unika v?øΩrden
-		ArrayList<Integer>nuv1 = new ArrayList<Integer>();	//h?øΩr l?øΩggs v?øΩrden som redan finns i uv
-		ArrayList<Integer>nuv2 = new ArrayList<Integer>();	//h?øΩr l?øΩggs v?øΩrden som finns i listan ovan
-		ArrayList<Integer>nuv3 = new ArrayList<Integer>();	//h?øΩr l?øΩggs v?øΩrden som finns i listan ovan
+
+	ArrayList<Integer>av   = new ArrayList<Integer>();	//h√§r l√§ggs alla v√§rden
+	ArrayList<Integer>uv   = new ArrayList<Integer>();	//h√§r l√§ggs unika v√§rden
+	ArrayList<Integer>nuv1 = new ArrayList<Integer>();	//h√§r l√§ggs v√§rden som redan finns i uv
+	ArrayList<Integer>nuv2 = new ArrayList<Integer>();	//h√§r l√§ggs v√§rden som finns i listan ovan
+	ArrayList<Integer>nuv3 = new ArrayList<Integer>();	//h√§r l√§ggs v√§rden som finns i listan ovan
+
 		Set<String>suits	   = new HashSet<String>();
 		
 		for (int i = 0; i < 5; i++){
@@ -82,7 +84,7 @@ public class Hand {
 			hValue = 1;
 		}
 		if (nuv1.size() == 2){
-			s = "Tv?øΩpar i " + nuv1.get(0) + " och " + nuv1.get(1);
+			s = "Tv√•par i " + nuv1.get(0) + " och " + nuv1.get(1);
 			hValue = 2;
 		}
 		if (nuv2.size() == 1){
@@ -90,15 +92,15 @@ public class Hand {
 			hValue = 3;
 		}
 		if (uv.size() == 5 && (uv.get(0) + 4) == uv.get(4)){
-			s = "Stege " + uv.get(4) + " h?øΩg";
+			s = "Stege " + uv.get(4) + " h√∂g";
 			hValue = 4;
 		}
 		if (suits.size() == 1){
-			s = "F?øΩrg";
+			s = "F√§rg";
 			hValue = 5;
 		}
 		if (nuv1.size() == 2 && nuv2.size() == 1){
-			s = "K?øΩk " + nuv2.get(0) + " ?øΩver";
+			s = "K√•k " + nuv2.get(0) + " √∂ver";
 			hValue = 6;
 		}
 		if (nuv3.size() == 1){
@@ -106,7 +108,7 @@ public class Hand {
 			hValue = 7;
 		}	
 		if (uv.size() == 5 && (uv.get(0) + 4) == uv.get(4) && suits.size() == 1){
-			s = "Straight flush " + uv.get(4).toString() + " h?øΩg";
+			s = "Straight flush " + uv.get(4).toString() + " h√∂g";
 			hValue = 8;
 		}
 		if (suits.size() == 1 && uv.get(0) == 1 && ((uv.get(1)) + 3) == uv.get(4) && uv.get(4) == 13){

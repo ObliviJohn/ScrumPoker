@@ -3,6 +3,7 @@ package model;
 public class Statistics {
 	
 	public Double[] getStats(){
+
 		Hand h = new Hand();
 		int x = h.getVal();
 		
