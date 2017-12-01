@@ -1,10 +1,15 @@
-package poker;
+package controller;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+
+import model.Statistics;
+import view.Account;
+import view.Table;
+import view.VideopokerView;
 
 public class Controller {
 
@@ -31,7 +36,7 @@ public class Controller {
 		vpv.setStats(odds);
 	}
 
-	class accountListener implements ActionListener {
+	public class accountListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			Account acc = new Account();
 			JButton b = (JButton) e.getSource();

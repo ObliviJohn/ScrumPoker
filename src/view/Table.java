@@ -1,9 +1,11 @@
-package poker;
+package view;
 
 import java.awt.*;
 import java.awt.event.ActionListener;
 
 import javax.swing.*;
+
+import controller.Controller;
 
 public class Table {
 

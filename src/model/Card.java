@@ -1,4 +1,4 @@
-package poker;
+package model;
 
 public class Card {
 	private int value;

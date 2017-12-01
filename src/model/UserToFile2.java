@@ -1,4 +1,4 @@
-package poker;
+package model;
 
 import java.io.EOFException;
 import java.io.File;

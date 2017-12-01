@@ -1,9 +1,8 @@
-package poker;
-
+package model;
 
 public class Statistics {
 	
-	Double[] getStats(){
+	public Double[] getStats(){
 		Hand h = new Hand();
 		int x = h.getVal();
 		

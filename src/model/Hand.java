@@ -1,4 +1,4 @@
-package poker;
+package model;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -44,11 +44,11 @@ public class Hand {
 	}
 	
 	public String eval(){
-		ArrayList<Integer>av   = new ArrayList<Integer>();	//hï¿½r lï¿½ggs alla vï¿½rden
-		ArrayList<Integer>uv   = new ArrayList<Integer>();	//hï¿½r lï¿½ggs unika vï¿½rden
-		ArrayList<Integer>nuv1 = new ArrayList<Integer>();	//hï¿½r lï¿½ggs vï¿½rden som redan finns i uv
-		ArrayList<Integer>nuv2 = new ArrayList<Integer>();	//hï¿½r lï¿½ggs vï¿½rden som finns i listan ovan
-		ArrayList<Integer>nuv3 = new ArrayList<Integer>();	//hï¿½r lï¿½ggs vï¿½rden som finns i listan ovan
+		ArrayList<Integer>av   = new ArrayList<Integer>();	//h?¿½r l?¿½ggs alla v?¿½rden
+		ArrayList<Integer>uv   = new ArrayList<Integer>();	//h?¿½r l?¿½ggs unika v?¿½rden
+		ArrayList<Integer>nuv1 = new ArrayList<Integer>();	//h?¿½r l?¿½ggs v?¿½rden som redan finns i uv
+		ArrayList<Integer>nuv2 = new ArrayList<Integer>();	//h?¿½r l?¿½ggs v?¿½rden som finns i listan ovan
+		ArrayList<Integer>nuv3 = new ArrayList<Integer>();	//h?¿½r l?¿½ggs v?¿½rden som finns i listan ovan
 		Set<String>suits	   = new HashSet<String>();
 		
 		for (int i = 0; i < 5; i++){
@@ -82,7 +82,7 @@ public class Hand {
 			hValue = 1;
 		}
 		if (nuv1.size() == 2){
-			s = "Tvï¿½par i " + nuv1.get(0) + " och " + nuv1.get(1);
+			s = "Tv?¿½par i " + nuv1.get(0) + " och " + nuv1.get(1);
 			hValue = 2;
 		}
 		if (nuv2.size() == 1){
@@ -90,15 +90,15 @@ public class Hand {
 			hValue = 3;
 		}
 		if (uv.size() == 5 && (uv.get(0) + 4) == uv.get(4)){
-			s = "Stege " + uv.get(4) + " hï¿½g";
+			s = "Stege " + uv.get(4) + " h?¿½g";
 			hValue = 4;
 		}
 		if (suits.size() == 1){
-			s = "Fï¿½rg";
+			s = "F?¿½rg";
 			hValue = 5;
 		}
 		if (nuv1.size() == 2 && nuv2.size() == 1){
-			s = "Kï¿½k " + nuv2.get(0) + " ï¿½ver";
+			s = "K?¿½k " + nuv2.get(0) + " ?¿½ver";
 			hValue = 6;
 		}
 		if (nuv3.size() == 1){
@@ -106,7 +106,7 @@ public class Hand {
 			hValue = 7;
 		}	
 		if (uv.size() == 5 && (uv.get(0) + 4) == uv.get(4) && suits.size() == 1){
-			s = "Straight flush " + uv.get(4).toString() + " hï¿½g";
+			s = "Straight flush " + uv.get(4).toString() + " h?¿½g";
 			hValue = 8;
 		}
 		if (suits.size() == 1 && uv.get(0) == 1 && ((uv.get(1)) + 3) == uv.get(4) && uv.get(4) == 13){

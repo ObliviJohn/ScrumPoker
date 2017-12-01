@@ -1,4 +1,4 @@
-package poker;
+package view;
 
 import java.awt.Color;
 import java.awt.Component;
@@ -19,7 +19,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
 
-import poker.Controller.accountListener;
+import controller.Controller.accountListener;
 
 public class VideopokerView {
 
