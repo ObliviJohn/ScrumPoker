@@ -15,7 +15,11 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 import javax.swing.border.Border;
+
+import poker.Controller.accountListener;
 
 public class VideopokerView {
 
@@ -48,7 +52,7 @@ public class VideopokerView {
 
 	private Component stats() {
 		JPanel panel = new JPanel();
-		String[] hands = { "High card: " , "Pair: " , "Two pairs: " , "Three of a kind: " , "Straight: " ,
+		String[] hands = { "Pair: " , "Two pairs: " , "Three of a kind: " , "Straight: " ,
 						  "Flush: ", "Full house: " , "Four of a kind: " , "Straight Flush: " , "Royal Flush: "};
 
 		panel.setLayout(new GridLayout(3,8));
@@ -67,7 +71,7 @@ public class VideopokerView {
 				info[i].setText(hands[6]);
 				break;
 			case 6:
-				info[i].setText(hands[9]);
+				info[i].setText("Players name");
 				break;
 			case 8:
 				info[i].setText(hands[1]);
@@ -79,7 +83,7 @@ public class VideopokerView {
 				info[i].setText(hands[7]);
 				break;
 			case 14:
-				info[i].setText("Players name");
+
 				break;
 			case 16:
 				info[i].setText(hands[2]);
@@ -102,11 +106,14 @@ public class VideopokerView {
 		return panel;
 	}
 	
-	public void setStats(int[] testStats) {
+	public void setStats(Double[] odds) {
 		int pos = 1;
-		for ( int i = 0; i < testStats.length; i++ ) {
-			info[pos].setText(testStats[i] + "%");
+		for ( int i = 0; i < odds.length; i++ ) {
+			info[pos].setText(odds[i] + "%");
 			pos += 2;
+			if ( pos == 7 ) {
+				pos += 2;
+			}
 			if ( pos == 15 ) {
 				pos += 2;
 			}
