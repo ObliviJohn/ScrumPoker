@@ -1,11 +1,11 @@
-package view;
+package View;
 
 import java.awt.*;
 import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
-import controller.Controller;
+import Controller.Controller;
 
 public class Table {
 

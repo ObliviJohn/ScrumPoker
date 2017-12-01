@@ -1,4 +1,4 @@
-package model;
+package Model;
 
 
 import java.io.File;
@@ -7,7 +7,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.io.OutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -39,8 +38,7 @@ ArrayList<User> user = new ArrayList<>();
 				System.out.println("Added user");
 	}
 	
-	
-	@SuppressWarnings("unchecked")
+
 	public void readUser() throws  ClassNotFoundException, IOException {
 	
 		File f = new File("userList2.txt");
@@ -73,7 +71,7 @@ ArrayList<User> user = new ArrayList<>();
 //		
 //		UserToFile utf = new UserToFile();
 //		ArrayList<User> user = new ArrayList<>();
-//		utf.inputUser(666, "MR", "Worm");
+//		utf.inputUser(666, "MR", "Worm"); //Intressant user :P
 //		utf.createUser();
 //		utf.readUser();
 

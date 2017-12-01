@@ -1,4 +1,4 @@
-package controller;
+package Controller;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -6,10 +6,10 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 
-import model.Statistics;
-import view.Account;
-import view.Table;
-import view.VideopokerView;
+import Model.Statistics;
+import View.Account;
+import View.Table;
+import View.VideopokerView;
 
 public class Controller {
 

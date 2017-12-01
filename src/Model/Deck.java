@@ -1,10 +1,8 @@
-package model;
+package Model;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
-import model.Card;
 
 public class Deck {
 	public List<Card> cards;
