@@ -15,7 +15,8 @@ public class Deck {
 	}
 
 	public void createCards() {
-
+		
+		cards.clear();
 		for (Suits cardSuits : Suits.values()) {
 			for (int i = 1; i <= 13; ++i) {
 				cards.add(new Card(i, cardSuits));
@@ -24,7 +25,6 @@ public class Deck {
 		shuffle();
 }
 	
-
 		public Card draw() {
 			
 			cards.get(0);
@@ -36,13 +36,4 @@ public class Deck {
 
 			Collections.shuffle(cards);
 		}
-		
-//		public static void main(String[] args) {
-//			Deck deck = new Deck();
-//			deck.draw();
-//			System.out.println("Hej");
-//			System.out.println(deck.draw());
-//			
-//			
-//		}
 }
