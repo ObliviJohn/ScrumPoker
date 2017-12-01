@@ -15,7 +15,7 @@ public class Deck {
 	}
 
 	public void createCards() {
-		
+
 		cards.clear();
 		for (Suits cardSuits : Suits.values()) {
 			for (int i = 1; i <= 13; ++i) {
@@ -23,17 +23,17 @@ public class Deck {
 			}
 		}
 		shuffle();
-}
-	
-		public Card draw() {
-			
-			cards.get(0);
-			return cards.remove(0);
-			
-		}
+	}
 
-		public void shuffle() {
+	public Card draw() {
 
-			Collections.shuffle(cards);
-		}
+		cards.get(0);
+		return cards.remove(0);
+
+	}
+
+	public void shuffle() {
+
+		Collections.shuffle(cards);
+	}
 }
