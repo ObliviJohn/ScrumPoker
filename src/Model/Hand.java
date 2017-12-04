@@ -12,14 +12,20 @@ public class Hand {
 
 	Deck d = new Deck();	
 	
-	public void fill(){					
+	public Hand() {
 		while(currentHand.size() < 5){
 			currentHand.add(d.draw());
 		}
 	}
 	
+	public void reset() {
+		d = new Deck();
+		newHand();
+	}
+	
 	public void newHand(){
 		currentHand.clear();
+		hValue = 0;
 		d.createCards();
 		while(currentHand.size() < 5){
 			currentHand.add(d.draw());
