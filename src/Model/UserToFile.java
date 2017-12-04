@@ -9,6 +9,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class UserToFile implements Serializable {
@@ -27,7 +28,7 @@ ArrayList<User> user = new ArrayList<>();
 	
 		
 		try {
-		FileOutputStream fos = new FileOutputStream(new File("userList2.txt"),true);
+		FileOutputStream fos = new FileOutputStream(new File("userList.txt"));
 		ObjectOutputStream oos = new ObjectOutputStream(fos);
 		oos.writeObject(user);
 		oos.close();
@@ -37,33 +38,26 @@ ArrayList<User> user = new ArrayList<>();
 		}
 				System.out.println("Added user");
 	}
-	
 
-	public void readUser() throws  ClassNotFoundException, IOException {
 	
-		File f = new File("userList2.txt");
-		FileInputStream fis = new FileInputStream("userList2.txt");
-		ObjectInputStream oin = new ObjectInputStream(fis);
-		this.user=(ArrayList<User>)oin.readObject();
-		
+	@SuppressWarnings("unchecked")
+	public List<User> readUser() throws  ClassNotFoundException, IOException {
+		List <User> readUser = null;
+	
 		try{
 			
-			if(	f.exists()) {
-		User u = new User();
-		this.user.add(u);
-			}
-				
+			ObjectInputStream oin = new ObjectInputStream(new FileInputStream("userList.txt"));
+			readUser = (List<User>) oin.readObject();
+	
+		
 			
 		} catch(ClassCastException cc) {
 			cc.printStackTrace();
 			
-		}
+		}catch(Exception e) {}
+		System.out.println(readUser.toString());
+		return readUser;
 		
-		
-		for(User u : user) {
-			System.out.println(u);
-		}
-		System.out.println(oin.toString());
 		
 	}
 
@@ -75,6 +69,7 @@ ArrayList<User> user = new ArrayList<>();
 //		utf.createUser();
 //		utf.readUser();
 
-		
 	}
+
+	
 }
