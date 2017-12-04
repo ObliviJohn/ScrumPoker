@@ -5,9 +5,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 
 import Model.Statistics;
 import Model.User;
+import Model.UserToFile;
 import View.Account;
 import View.Table;
 import View.VideopokerView;
@@ -21,6 +23,7 @@ public class Controller {
 	private Statistics stats;
 	private Account acc;
 	private User user;
+	private UserToFile utf = new UserToFile();
 //	Starting odds before drawing any cards
 	private Double[] odds = { 42.3, 4.8, 2.1, 0.39, 0.20, 0.14, 0.024, 0.0014, 0.00015 };
 
@@ -38,7 +41,8 @@ public class Controller {
 		vpv.draw(new draw());
 		vpv.account(new accountListener());
 		vpv.setStats(odds);
-	
+		
+		utf.init();
 		user = new User(50, "Guest", "password");
 	}
 
@@ -117,24 +121,46 @@ public class Controller {
 
 	class accountSignIn implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			user = new User(50, acc.getUsernameField(), acc.getPasswordField());
 
-			updateUser(acc.getUsernameField(), acc.getFundsField());
+			String accName = acc.getUsernameField();
+			String accPass = acc.getPasswordField();
+
+			for(User u : utf.getUsers()) {
+				if(u.getName().equals(accName) && u.getPassword().equals(accPass) ) {
+					user = u;
+					updateUser(user.getName(), user.getMoney());
+					return;
+			}
+			}
+			JOptionPane.showMessageDialog(null, "Login Failed!!!");
 		}
 	}
 
 	class accountCreateNew implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
+
+			String accName = acc.getUsernameField();
+			String accPass = acc.getPasswordField();
+			int funds = acc.getFundsField();
 			
-			user = new User(50, acc.getUsernameField(), acc.getPasswordField());
-			updateUser(acc.getUsernameField(), acc.getFundsField());
+			for(User u : utf.getUsers()) {
+				if(u.getName().equals(accName)) {
+					JOptionPane.showMessageDialog(null, "Username already exists!!!");
+					return;
+				}
+			}
+			utf.inputUser(funds, accName, accPass);
+			user = new User(funds, accName, accPass);
+			utf.createUser();
+			updateUser(user.getName(), user.getMoney());
 		}
 	}
 
 	class accountAddFunds implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			user.setMoney(user.getMoney() + acc.getFundsField());
-			System.out.println(user);
+			utf.createUser();
+			updateUser(user.getName(), user.getMoney());
 		}
 	}
 

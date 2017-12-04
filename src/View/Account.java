@@ -23,7 +23,7 @@ public class Account {
 	
 	private JTextField login = new JTextField("Usernamn");
 	private JPasswordField password = new JPasswordField("Password");
-	private JTextField funds = new JTextField("00");
+	private JTextField funds = new JTextField("50");
 	private JLabel curUser = new JLabel("Current User: Guest");
 
 
