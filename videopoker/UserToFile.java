@@ -7,9 +7,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.io.OutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class UserToFile implements Serializable {
@@ -28,7 +28,7 @@ ArrayList<User> user = new ArrayList<>();
 	
 		
 		try {
-		FileOutputStream fos = new FileOutputStream(new File("userList2.txt"),true);
+		FileOutputStream fos = new FileOutputStream(new File("userList.txt"));
 		ObjectOutputStream oos = new ObjectOutputStream(fos);
 		oos.writeObject(user);
 		oos.close();
@@ -41,42 +41,26 @@ ArrayList<User> user = new ArrayList<>();
 	
 	
 	@SuppressWarnings("unchecked")
-	public void readUser() throws  ClassNotFoundException, IOException {
+	public List<User> readUser() throws  ClassNotFoundException, IOException {
+		List <User> readUser = null;
 	
-		File f = new File("userList2.txt");
-		FileInputStream fis = new FileInputStream("userList2.txt");
-		ObjectInputStream oin = new ObjectInputStream(fis);
-		this.user=(ArrayList<User>)oin.readObject();
-		
 		try{
 			
-			if(	f.exists()) {
-		User u = new User();
-		this.user.add(u);
-			}
-				
+			ObjectInputStream oin = new ObjectInputStream(new FileInputStream("userList.txt"));
+			readUser = (List<User>) oin.readObject();
+	
+		
 			
 		} catch(ClassCastException cc) {
 			cc.printStackTrace();
 			
-		}
+		}catch(Exception e) {}
+		System.out.println(readUser.toString());
+		return readUser;
 		
 		
-		for(User u : user) {
-			System.out.println(u);
-		}
-		System.out.println(oin.toString());
-		
+
 	}
 
-	public static void main(String[] args) throws IOException, ClassNotFoundException {
-//		
-//		UserToFile utf = new UserToFile();
-//		ArrayList<User> user = new ArrayList<>();
-//		utf.inputUser(666, "MR", "Worm");
-//		utf.createUser();
-//		utf.readUser();
-
-		
-	}
+	
 }
