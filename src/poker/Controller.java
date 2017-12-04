@@ -77,6 +77,7 @@ public class Controller {
 	public void cardButton(ActionEvent e) {
 
 		JButton b = (JButton) e.getSource();
+
 		if (b.getBackground() == Color.RED) {
 			b.setBackground(new Color(238,238,238));
 			b.setText("Hold");
@@ -84,7 +85,6 @@ public class Controller {
 			b.setBackground(Color.RED);
 			b.setText("Discard");
 		}
-	
 	}
 	class draw implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
