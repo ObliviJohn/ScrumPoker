@@ -23,7 +23,7 @@ public class Account {
 	
 	private JTextField login = new JTextField("Usernamn");
 	private JPasswordField password = new JPasswordField("Password");
-	private JTextField funds = new JTextField("0.00");
+	private JTextField funds = new JTextField("00");
 	private JLabel curUser = new JLabel("Current User: Guest");
 
 
@@ -71,7 +71,6 @@ public class Account {
 		gbc.gridx = 1;
 		panel.add(password, gbc);
 		
-		System.out.println(panel.getComponentCount());
 		curUser.setPreferredSize(new Dimension(200, 30));
 		gbc.insets = new Insets(00,80,0,0);
 		gbc.gridy ++;
@@ -117,7 +116,7 @@ public class Account {
 		addFundsButt.addActionListener(act);
 	}
 	public void setUsername(String username) {
-		curUser = new JLabel("Current User: "+username);
+		curUser.setText("Current User: "+username);
 	}
 	public String getUsernameField() {
 		return login.getText();
@@ -129,8 +128,9 @@ public class Account {
 		
 		return retStr;
 	}
-	public String getFundsField() {
-		return funds.getText();
+	public int getFundsField() {
+		int retInt = Integer.parseInt(funds.getText());
+		return retInt;
 	}
 
 }

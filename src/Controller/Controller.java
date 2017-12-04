@@ -7,16 +7,20 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 
 import Model.Statistics;
+import Model.User;
 import View.Account;
 import View.Table;
 import View.VideopokerView;
 
 public class Controller {
 
+	private boolean[] thrownCards = new boolean[5];
+	
 	private Table table;
 	private VideopokerView vpv;
 	private Statistics stats;
-
+	private Account acc;
+	private User user;
 //	Starting odds before drawing any cards
 	private Double[] odds = { 42.3, 4.8, 2.1, 0.39, 0.20, 0.14, 0.024, 0.0014, 0.00015 };
 
@@ -34,11 +38,13 @@ public class Controller {
 		vpv.draw(new draw());
 		vpv.account(new accountListener());
 		vpv.setStats(odds);
+	
+		user = new User(50, "Guest", "password");
 	}
 
 	public class accountListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			Account acc = new Account();
+			acc = new Account();
 			JButton b = (JButton) e.getSource();
 			acc.start(b);
 			b.setEnabled(false);
@@ -90,6 +96,8 @@ public class Controller {
 			b.setBackground(Color.RED);
 			b.setText("Discard");
 		}
+	
+		
 	}
 
 	class draw implements ActionListener {
@@ -99,26 +107,41 @@ public class Controller {
 			for ( int i = 0; i < stats.getStats().length; i++ ) {
 				System.out.println("Controller: " + stats.getStats()[i]);
 			}
+			for(int i = 0 ; i < 5 ; i++) {
+				
+				System.out.println(thrownCards[i]);
+				
+			}
 		}
 	}
 
 	class accountSignIn implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
+			user = new User(50, acc.getUsernameField(), acc.getPasswordField());
 
-			System.out.println("Stille natt");
+			updateUser(acc.getUsernameField(), acc.getFundsField());
 		}
 	}
 
 	class accountCreateNew implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			System.out.println("Staffan hade en stalledräng");
+			
+			user = new User(50, acc.getUsernameField(), acc.getPasswordField());
+			updateUser(acc.getUsernameField(), acc.getFundsField());
 		}
 	}
 
 	class accountAddFunds implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			System.out.println("God dag");
+			user.setMoney(user.getMoney() + acc.getFundsField());
+			System.out.println(user);
 		}
 	}
 
+	public void updateUser(String name, int funds) {
+		acc.setUsername(acc.getUsernameField());
+		vpv.setUsername(name, funds);
+		System.out.println(user);
+	}
+	
 }
