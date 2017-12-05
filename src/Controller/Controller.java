@@ -3,13 +3,17 @@
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
+import Model.Card;
+import Model.Hand;
 import Model.Statistics;
 import Model.User;
 import Model.UserToFile;
+import Model.UserToFileOld;
 import View.Account;
 import View.Table;
 import View.VideopokerView;
@@ -23,74 +27,78 @@ public class Controller {
 	private Statistics stats;
 	private Account acc;
 	private User user;
-	private UserToFile utf = new UserToFile();
+	private UserToFileOld utf = new UserToFileOld();
 //	Starting odds before drawing any cards
 	private Double[] odds = { 42.3, 4.8, 2.1, 0.39, 0.20, 0.14, 0.024, 0.0014, 0.00015 };
+	private Hand hand;
+	private int turn = 0;
 
 	public void init() {
-		// table = new Table(this);
-		// table.showTable();
 		vpv = new VideopokerView();
 		stats = new Statistics();
+		hand = new Hand();
 		vpv.init();
-		vpv.cardOne(new cardOne());
-		vpv.cardTwo(new cardTwo());
-		vpv.cardThree(new cardThree());
-		vpv.cardFour(new cardFour());
-		vpv.cardFive(new cardFive());
-		vpv.draw(new draw());
-		vpv.account(new accountListener());
-		vpv.setStats(odds);
 		
-		utf.init();
 		user = new User(50, "Guest", "password");
+		
+		vpv.cardOne(new CardOne());
+		vpv.cardTwo(new CardTwo());
+		vpv.cardThree(new CardThree());
+		vpv.cardFour(new CardFour());
+		vpv.cardFive(new CardFive());
+		vpv.resetGame(new ResetGame());
+		vpv.draw(new Draw());
+		vpv.account(new AccountListener());
+		vpv.setStats(stats.getStats());
+
+		utf.init();
+		System.out.println(utf.getUsers());
 	}
 
-	public class accountListener implements ActionListener {
+	public class AccountListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			acc = new Account();
 			JButton b = (JButton) e.getSource();
 			acc.start(b);
 			b.setEnabled(false);
-
-			acc.signInListen(new accountSignIn());
+			acc.signInListen(new accountLogIn());
 			acc.createNewListen(new accountCreateNew());
 			acc.addFundsListen(new accountAddFunds());
 		}
 	}
 
-	class cardOne implements ActionListener {
+	class CardOne implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			cardButton(e);
+			cardButton(e, 0);
 		}
 	}
 
-	class cardTwo implements ActionListener {
+	class CardTwo implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			cardButton(e);
+			cardButton(e, 1);
 		}
 	}
 
-	class cardThree implements ActionListener {
+	class CardThree implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			cardButton(e);
+			cardButton(e, 2);
 		}
 	}
 
-	class cardFour implements ActionListener {
+	class CardFour implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			cardButton(e);
+			cardButton(e, 3);
 		}
 	}
 
-	class cardFive implements ActionListener {
+	class CardFive implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			cardButton(e);
+			cardButton(e, 4);
 		}
 	}
 
-	public void cardButton(ActionEvent e) {
-
+	public void cardButton(ActionEvent e, int i) {
+		
 		JButton b = (JButton) e.getSource();
 
 		if (b.getBackground() == Color.RED) {
@@ -100,26 +108,54 @@ public class Controller {
 			b.setBackground(Color.RED);
 			b.setText("Discard");
 		}
-	
-		
+
+		this.setThrownCards(i);
 	}
 
-	class draw implements ActionListener {
+	public void setThrownCards(int i) {
+		thrownCards[i] = !thrownCards[i];
+	}
+
+	class ResetGame implements ActionListener {
+
+		@Override
 		public void actionPerformed(ActionEvent e) {
+			vpv.startGame();
+			for (int i = 0; i < thrownCards.length; i++) {
+				thrownCards[i] = false;
+			}
+			vpv.resetButtons();
 			vpv.setStats(stats.getStats());
-//			Just for trying too see if the stats are changing
-			for ( int i = 0; i < stats.getStats().length; i++ ) {
-				System.out.println("Controller: " + stats.getStats()[i]);
-			}
-			for(int i = 0 ; i < 5 ; i++) {
-				
-				System.out.println(thrownCards[i]);
-				
-			}
+			turn = 0;
+			hand.reset();
 		}
 	}
 
-	class accountSignIn implements ActionListener {
+	class Draw implements ActionListener {
+
+		public void actionPerformed(ActionEvent e) {
+		if (turn == 0) {
+			ArrayList<Card> t = hand.getHand();
+			vpv.showCard(t);
+			turn++;
+		} else {
+			JButton b = (JButton) e.getSource();
+			b.setEnabled(false);
+			int[] cardNo = new int[5];
+			for (int i = 0; i < thrownCards.length; i++) {
+				if (thrownCards[i] == true) {
+					cardNo[i] = thrownCards[i] ? 1 : 0;
+				}
+			}
+
+			hand.eval();
+			System.out.println(hand.getVal());
+			String test = hand.eval();
+			System.out.println(test);
+		}
+	}
+	}
+	class accountLogIn implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 
 			String accName = acc.getUsernameField();
@@ -133,8 +169,10 @@ public class Controller {
 			}
 			}
 			JOptionPane.showMessageDialog(null, "Login Failed!!!");
-		}
 	}
+
+	}
+
 
 	class accountCreateNew implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
@@ -163,7 +201,8 @@ public class Controller {
 			updateUser(user.getName(), user.getMoney());
 		}
 	}
-
+	
+	
 	public void updateUser(String name, int funds) {
 		acc.setUsername(acc.getUsernameField());
 		vpv.setUsername(name, funds);
@@ -171,3 +210,4 @@ public class Controller {
 	}
 	
 }
+

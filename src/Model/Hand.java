@@ -14,7 +14,7 @@ public class Hand {
 	
 	
 	
-	public void fill(){					
+	public Hand() {
 		while(currentHand.size() < 5){
 			currentHand.add(d.draw());
 		}
@@ -28,6 +28,7 @@ public class Hand {
 	public void newHand(){
 		hValue=0;
 		currentHand.clear();
+		hValue = 0;
 		d.createCards();
 		while(currentHand.size() < 5){
 			currentHand.add(d.draw());

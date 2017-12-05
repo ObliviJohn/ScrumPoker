@@ -9,13 +9,17 @@ import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
+
+import Model.Card;
 
 public class VideopokerView {
 
@@ -28,22 +32,35 @@ public class VideopokerView {
 	private JButton cardFour = new JButton();
 	private JButton cardFive = new JButton();
 	private JButton account = new JButton("Account");
+	private JButton newGame = new JButton("New Game");
 	private JButton draw = new JButton();
 	private JLabel[] info = new JLabel[24];
 	private JLabel[] cards = new JLabel[5];
+	private ImageHandler imgHand = new ImageHandler();
+	private int[] throwCards = new int[5];
 	
 	public void init() {
 		frame.setPreferredSize(new Dimension(1000, 620));
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.pack();
-
-		container = frame.getContentPane();
 		frame.setResizable(false);
+		container = frame.getContentPane();
 		container.setLayout(new GridLayout(2, 1));
 		container.add(topLevel());
 		container.add(stats());
-		cardOne.setEnabled(false);
+	}
+	
+	public void startGame() {
+		for ( int i = 0; i < cards.length; i++) {
+			cards[i].setIcon(imgHand.getBackside());
+		}
+		cardOne.setEnabled(true);
+		cardTwo.setEnabled(true);
+		cardThree.setEnabled(true);
+		cardFour.setEnabled(true);
+		cardFive.setEnabled(true);
+		draw.setEnabled(true);
 	}
 
 	private Component stats() {
@@ -138,10 +155,10 @@ public class VideopokerView {
 			cards[i] = new JLabel();
 			cards[i].setPreferredSize(new Dimension(100, 145));
 			cards[i].setBorder(border);
-			cards[i].setText("Card " + i);
+			cards[i].setIcon(imgHand.getBackside());
 			panel.add(cards[i], gbc);
 		}
-
+		
 		gbc.gridy = 1;
 		gbc.gridx = 1;
 		gbc.insets = new Insets(10, 10, 0, 0);
@@ -184,12 +201,41 @@ public class VideopokerView {
 	    draw.setText("Draw");
 	    panel.add(draw, gbc);
 	    
+		gbc.gridx = 10;
+		gbc.gridy = 0;
+		newGame.setPreferredSize(new Dimension(100,30));
+		panel.add(newGame, gbc);
+
+	    
 	    gbc.gridy = 3;
 	    gbc.gridx = 14;
 	    account.setPreferredSize(new Dimension(100, 40));
 	    panel.add(account, gbc);
 
 		return panel;
+	}
+	
+	public void resetButtons() {
+		cardOne.setBackground(new Color(238, 238, 238));
+		cardOne.setText("Hold");
+		cardTwo.setBackground(new Color(238, 238, 238));
+		cardTwo.setText("Hold");
+		cardThree.setBackground(new Color(238, 238, 238));
+		cardThree.setText("Hold");
+		cardFour.setBackground(new Color(238, 238, 238));
+		cardFour.setText("Hold");
+		cardFive.setBackground(new Color(238, 238, 238));
+		cardFive.setText("Hold");
+	}
+	
+	public void resetGame(ActionListener act) {
+		newGame.addActionListener(act);
+		cardOne.setEnabled(false);
+		cardTwo.setEnabled(false);
+		cardThree.setEnabled(false);
+		cardFour.setEnabled(false);
+		cardFive.setEnabled(false);
+		draw.setEnabled(false);
 	}
 	
 	public void cardOne(ActionListener act) {
@@ -224,4 +270,16 @@ public class VideopokerView {
 		info[7].setText(username);
 		info[15].setText(Integer.toString(funds));
 		}
+
+	public void showCard(ArrayList<Card> card) {
+		
+		ImageIcon[] c = imgHand.handImages(card);
+		for ( int i = 0; i < c.length; i++ ) {
+			cards[i].setIcon(c[i]);
+		}
+	}
+
+	public int[] getThrownCards() {
+		return throwCards;
+	}
 }
