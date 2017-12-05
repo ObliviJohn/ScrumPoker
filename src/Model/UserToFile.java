@@ -1,4 +1,4 @@
-package videopoker;
+package Model;
 
 
 import java.io.File;

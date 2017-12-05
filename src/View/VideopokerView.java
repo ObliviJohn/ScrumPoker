@@ -270,18 +270,9 @@ public class VideopokerView {
 	}
 
 	public void showCard(ArrayList<Card> card) {
-		if (turn < 1) {
-			ImageIcon[] c = imgHand.handImages(card);
-			for (int i = 0; i < c.length; i++) {
-				cards[i].setIcon(c[i]);
-			}
-			turn++;
-		} else {
-			cardOne.setEnabled(false);
-			cardTwo.setEnabled(false);
-			cardThree.setEnabled(false);
-			cardFour.setEnabled(false);
-			cardFive.setEnabled(false);
+		ImageIcon[] c = imgHand.handImages(card);
+		for (int i = 0; i < c.length; i++) {
+			cards[i].setIcon(c[i]);
 		}
 	}
 
@@ -290,12 +281,6 @@ public class VideopokerView {
 	}
 
 	public void setDescription(String description, String text) {
-		if (description.endsWith(" 1")) {
-			message.setText("Pair in aces");
-		} else if (text == null) {
-			message.setText("No combinations");
-		} else {
-			message.setText(description + ". " + text);
-		}
+		message.setText(description + ". " + text);
 	}
 }

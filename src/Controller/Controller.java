@@ -21,7 +21,7 @@ public class Controller {
 	private Hand hand;
 	private int turn = 0;
 	private boolean[] thrownCards = new boolean[5];
-	
+
 	public void init() {
 		vpv = new VideopokerView();
 		stats = new Statistics();
@@ -81,7 +81,7 @@ public class Controller {
 	}
 
 	public void cardButton(ActionEvent e, int i) {
-		
+
 		JButton b = (JButton) e.getSource();
 		if (b.getBackground() == Color.RED) {
 			b.setBackground(new Color(238, 238, 238));
@@ -118,8 +118,10 @@ public class Controller {
 		public void actionPerformed(ActionEvent e) {
 
 			if (turn == 0) {
+				Double[] currentStats = stats.getStats();
 				ArrayList<Card> startHand = hand.getHand();
 				vpv.showCard(startHand);
+				vpv.setStats(currentStats);
 				turn++;
 			} else {
 				vpv.resetButtons();
@@ -136,7 +138,7 @@ public class Controller {
 				vpv.showCard(newHand);
 				String text = hand.getDrawDesc();
 				String description = hand.getDesc();
-				vpv.setDescription(description, text);				
+				vpv.setDescription(description, text);
 			}
 		}
 	}

@@ -13,7 +13,7 @@ public class Evaluator {
 	private ArrayList<String>aSuits = new ArrayList<String>(); //
 	
 	private int hScore, drawVal;
-	private String hDesc, dDesc; //gör metod reset allVal;
+	private String hDesc, dDesc;
 	
 	public int getScore(){
 		return hScore;
@@ -29,12 +29,18 @@ public class Evaluator {
 	public String getDrawDesc(){
 		return dDesc;
 	}
+	public void valReset(){
+		hScore = 0;
+		drawVal = 0;
+		hDesc = "";
+		dDesc = "";
+		
+	}
 	
 	public void handEv(List<Card>cHand){
 		clearAll();
-		hScore = 0;
-		drawVal = 0;
-		
+		valReset();
+
 		for (int i = 0; i < 5; i++){
 			Card c = cHand.get(i);
 			int j = c.getValue();
@@ -62,19 +68,17 @@ public class Evaluator {
 		}
 		Collections.sort(av);
 		Collections.sort(uv);
-		hDesc = "";
-		hScore = 0;
 		
 		if (nuv1.size() == 1){
-			hDesc = "Pair: " + nuv1.get(0);
+			hDesc = "Pair: " + nuv1.get(0) + " ";
 			hScore = 1;
 		}
 		if (nuv1.size() == 2){
-			hDesc = "Twopair: " + nuv1.get(0) + " and " + nuv1.get(1);
+			hDesc = "Twopair: " + nuv1.get(0) + " and " + nuv1.get(1) + " ";
 			hScore = 2;
 		}
 		if (nuv2.size() == 1){
-			hDesc = "Three of a kind: " + nuv2.get(0);
+			hDesc = "Three of a kind: " + nuv2.get(0) + " ";
 			hScore = 3;
 		}
 		if (uv.size() == 5 && (uv.get(0) + 4) == uv.get(4)){
@@ -86,7 +90,7 @@ public class Evaluator {
 			hScore = 4;
 		}
 		if (uSuits.size() == 1){
-			hDesc = "Flush " + uv.get(4).toString() + " high";
+			hDesc = "Flush: " + uv.get(4).toString() + " high";
 			hScore = 5;
 		}
 		if (nuv1.size() == 2 && nuv2.size() == 1){
@@ -94,7 +98,7 @@ public class Evaluator {
 			hScore = 6;
 		}
 		if (nuv3.size() == 1){
-			hDesc = "Four of a kind: " + nuv3.get(0);
+			hDesc = "Four of a kind: " + nuv3.get(0) + " ";
 			hScore = 7;
 		}	
 		if (uv.size() == 5 && (uv.get(0) + 4) == uv.get(4) && uSuits.size() == 1){
@@ -105,6 +109,8 @@ public class Evaluator {
 			hDesc = "Royal flush ";
 			hScore = 9;
 		}
+		if (hScore == 0)
+			hDesc = "No combinations";
 		
 		if (uv.size() == 5 && (hScore <= 1)){
 			int median = av.get(2);
@@ -149,6 +155,10 @@ public class Evaluator {
 				dDesc = "Flush draw";
 			}
 		}
+		if (drawVal == 0 && hScore < 2){
+			dDesc = "No draw";
+		}
+		
 	}
 
 	public void clearAll(){
