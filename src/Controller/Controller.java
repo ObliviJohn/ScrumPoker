@@ -21,7 +21,7 @@ public class Controller {
 	private Hand hand;
 	private int turn = 0;
 	private boolean[] thrownCards = new boolean[5];
-
+	
 	public void init() {
 		vpv = new VideopokerView();
 		stats = new Statistics();
@@ -109,7 +109,7 @@ public class Controller {
 			vpv.resetButtons();
 			vpv.setStats(stats.getStats());
 			turn = 0;
-			hand.reset();
+			hand.newHand();
 		}
 	}
 
@@ -118,10 +118,11 @@ public class Controller {
 		public void actionPerformed(ActionEvent e) {
 
 			if (turn == 0) {
-				ArrayList<Card> t = hand.getHand();
-				vpv.showCard(t);
+				ArrayList<Card> startHand = hand.getHand();
+				vpv.showCard(startHand);
 				turn++;
 			} else {
+				vpv.resetButtons();
 				JButton b = (JButton) e.getSource();
 				b.setEnabled(false);
 				int[] cardNo = new int[5];
@@ -130,11 +131,12 @@ public class Controller {
 						cardNo[i] = thrownCards[i] ? 1 : 0;
 					}
 				}
-
-				hand.eval();
-				System.out.println(hand.getVal());
-				String test = hand.eval();
-				System.out.println(test);
+				hand.discard(cardNo);
+				ArrayList<Card> newHand = hand.getHand();
+				vpv.showCard(newHand);
+				String text = hand.getDrawDesc();
+				String description = hand.getDesc();
+				vpv.setDescription(description, text);				
 			}
 		}
 	}
