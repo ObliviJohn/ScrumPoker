@@ -1,8 +1,10 @@
-package Model;
+package videopoker;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+import videopoker.Card;
 
 public class Deck {
 	public List<Card> cards;

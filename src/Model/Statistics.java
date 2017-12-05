@@ -17,7 +17,8 @@ public class Statistics {
 			Double[] odds = new Double[] {0d, 3.26, 6.4, 0d, 0d, 0.3, 0.072, 0d, 0d};
 			return odds;
 		}
-		else if(x==2) { // Två Par
+
+		else if(x==2) { // Tv� Par
 			Double[] odds = new Double[] {0d, 0d, 0d, 0d, 0d, 8.5, 0d, 0d, 0d};
 			return odds;
 		}
@@ -25,6 +26,7 @@ public class Statistics {
 			Double[] odds = new Double[] {0d, 0d, 0d, 0d, 0d, 6.7, 4.3, 0d, 0d};
 			return odds;
 		}
+
 		else if(x==0 && y==1) { // Hålstege
 			Double[] odds = new Double[] {25.5d, 0d, 0d, 8.5d, 0d, 0d, 0d, 0d, 0d};
 			return odds;
@@ -65,7 +67,6 @@ public class Statistics {
 			Double[] odds = new Double[] {0d, 0d, 0d, 17.0d, 19.1d, 0d, 0d, 0d, 0d};
 			return odds;
 		}		
-		
 		
 		
 		else {

@@ -1,15 +1,17 @@
+
 package Model;
+
 
 import java.util.*;
 
 public class Evaluator {
 	
-	private ArrayList<Integer>av    = new ArrayList<Integer>();	//h√§r l√§ggs alla v√§rden
-	private ArrayList<Integer>uv    = new ArrayList<Integer>();	//h√§r l√§ggs unika v√§rden
-	private ArrayList<Integer>nuv1  = new ArrayList<Integer>();	//h√§r l√§ggs v√§rden som redan finns i uv
-	private ArrayList<Integer>nuv2  = new ArrayList<Integer>();	//h√§r l√§ggs v√§rden som finns i listan ovan
-	private ArrayList<Integer>nuv3  = new ArrayList<Integer>();	//h√§r l√§ggs v√§rden som finns i listan ovan
-	private ArrayList<String>uSuits	= new ArrayList<String>(); //sorteras upp efter suits f√∂r att leta efter f√§rg eller f√§rgdrag
+	private ArrayList<Integer>av    = new ArrayList<Integer>();	//h‰r l‰ggs alla v‰rden
+	private ArrayList<Integer>uv    = new ArrayList<Integer>();	//h‰r l‰ggs unika v‰rden
+	private ArrayList<Integer>nuv1  = new ArrayList<Integer>();	//h‰r l‰ggs v‰rden som redan finns i uv
+	private ArrayList<Integer>nuv2  = new ArrayList<Integer>();	//h‰r l‰ggs v‰rden som finns i listan ovan
+	private ArrayList<Integer>nuv3  = new ArrayList<Integer>();	//h‰r l‰ggs v‰rden som finns i listan ovan
+	private ArrayList<String>uSuits	= new ArrayList<String>(); //sorteras upp efter suits fˆr att leta efter f‰rg eller f‰rgdrag
 	private ArrayList<String>aSuits = new ArrayList<String>(); //
 	
 	private int hScore, drawVal;
@@ -139,7 +141,8 @@ public class Evaluator {
 			dDesc = "Gutshot draw";
 		}
 		
-		//F√§rgdrag samt kombinerade drag
+
+		//F‰rgdrag samt kombinerade drag
 		
 		if (uSuits.size() == 2 && (aSuits.size() == 1 || aSuits.size() == 4)){
 			if (drawVal == 1){

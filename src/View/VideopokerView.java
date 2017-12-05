@@ -86,7 +86,10 @@ public class VideopokerView {
 				info[i].setText(hands[6]);
 				break;
 			case 6:
-				info[i].setText("Players name");
+				info[i].setText("Players name:");
+				break;
+			case 7:
+				info[i].setText("Guest");
 				break;
 			case 8:
 				info[i].setText(hands[1]);
@@ -98,7 +101,10 @@ public class VideopokerView {
 				info[i].setText(hands[7]);
 				break;
 			case 14:
-
+				info[i].setText("Riksdaler: ");
+				break;
+			case 15:
+				info[i].setText("50");
 				break;
 			case 16:
 				info[i].setText(hands[2]);
@@ -109,9 +115,6 @@ public class VideopokerView {
 			case 20:
 				info[i].setText(hands[8]);
 				break;
-			case 15:
-			case 22:
-			case 23:
 				info[i].setText("");
 				break;
 			default:
@@ -268,6 +271,11 @@ public class VideopokerView {
 	public void account(ActionListener act) {
 		account.addActionListener(act);
 	}
+	
+	public void setUsername(String username, int funds) {
+		info[7].setText(username);
+		info[15].setText(Integer.toString(funds));
+		}
 
 	public void showCard(ArrayList<Card> card) {
 		ImageIcon[] c = imgHand.handImages(card);
