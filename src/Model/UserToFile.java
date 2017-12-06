@@ -14,16 +14,29 @@ import java.util.List;
 
 public class UserToFile implements Serializable {
 
-ArrayList<User> user = new ArrayList<>();
+	 ArrayList<User> user = new ArrayList<>();
 
+	public  ArrayList<User> getUsers() {
+		return user;
+	}
+	public  void init() {
+		try {
+			user = readUser();
+			if(user == null) {
+				user = new ArrayList<>();
+			}
+			} catch (ClassNotFoundException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	
-	
-	public void inputUser(int bank,  String name ,String password) {
-		
+	public  void inputUser(int bank,  String name ,String password) {
+
 		user.add(new User(bank,name,password));
 		
 	}
-	public void createUser() {
+	public  void createUser() {
 		
 	
 		
@@ -37,17 +50,18 @@ ArrayList<User> user = new ArrayList<>();
 			i.printStackTrace();
 		}
 				System.out.println("Added user");
-	}
 	
+	}
+
 	
 	@SuppressWarnings("unchecked")
-	public List<User> readUser() throws  ClassNotFoundException, IOException {
-		List <User> readUser = null;
+	public  ArrayList<User> readUser() throws  ClassNotFoundException, IOException {
+		ArrayList <User> readUser = null;
 	
 		try{
 			
 			ObjectInputStream oin = new ObjectInputStream(new FileInputStream("userList.txt"));
-			readUser = (List<User>) oin.readObject();
+			readUser = (ArrayList<User>) oin.readObject();
 	
 		
 			
@@ -55,12 +69,12 @@ ArrayList<User> user = new ArrayList<>();
 			cc.printStackTrace();
 			
 		}catch(Exception e) {}
-		System.out.println(readUser.toString());
+//		System.out.println(readUser.toString());
 		return readUser;
 		
 		
-
 	}
+
 
 	
 }

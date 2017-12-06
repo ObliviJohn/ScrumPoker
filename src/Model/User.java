@@ -53,4 +53,5 @@ public class User implements Serializable {
 				+ " name=" + name + ", password=" + password + "]\n";
 	}
 	
+	
 }

@@ -9,10 +9,10 @@ public class Hand {
 	Deck d = new Deck();	
 	Evaluator e = new Evaluator();
 	
-//	public Hand(){
-//		fill();
-//		eval();
-//	}
+	public Hand(){
+		fill();
+		eval();
+	}
 	
 	public void fill(){					
 		while(currentHand.size() < 5){
@@ -71,5 +71,4 @@ public class Hand {
 		fill();
 		eval();
 	}
-	
 }

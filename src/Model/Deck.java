@@ -1,8 +1,11 @@
 package Model;
 
 import java.util.ArrayList;
+
 import java.util.Collections;
 import java.util.List;
+
+import Model.Card;
 
 public class Deck {
 	public List<Card> cards;
