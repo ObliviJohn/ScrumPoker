@@ -21,7 +21,7 @@ public class UserToFile implements Serializable {
 	}
 	public  void init() {
 		try {
-			readUser();
+			user = readUser();
 			if(user == null) {
 				user = new ArrayList<>();
 			}
@@ -31,14 +31,37 @@ public class UserToFile implements Serializable {
 		}
 	}
 	
+	public  void inputUser(int bank,  String name ,String password) {
+
+		user.add(new User(bank,name,password));
+		
+	}
+	public  void createUser() {
+		
+	
+		
+		try {
+		FileOutputStream fos = new FileOutputStream(new File("userList.txt"));
+		ObjectOutputStream oos = new ObjectOutputStream(fos);
+		oos.writeObject(user);
+		oos.close();
+		fos.close();
+		}catch (IOException i ) {
+			i.printStackTrace();
+		}
+				System.out.println("Added user");
+	
+	}
+
+	
 	@SuppressWarnings("unchecked")
-	public List<User> readUser() throws  ClassNotFoundException, IOException {
-		List <User> readUser = null;
+	public  ArrayList<User> readUser() throws  ClassNotFoundException, IOException {
+		ArrayList <User> readUser = null;
 	
 		try{
 			
 			ObjectInputStream oin = new ObjectInputStream(new FileInputStream("userList.txt"));
-			readUser = (List<User>) oin.readObject();
+			readUser = (ArrayList<User>) oin.readObject();
 	
 		
 			
@@ -46,11 +69,12 @@ public class UserToFile implements Serializable {
 			cc.printStackTrace();
 			
 		}catch(Exception e) {}
-		System.out.println(readUser.toString());
+//		System.out.println(readUser.toString());
 		return readUser;
 		
 		
-
 	}
 
+
+	
 }

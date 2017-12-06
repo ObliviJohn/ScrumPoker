@@ -1,4 +1,4 @@
-package videopoker;
+package Model;
 
 import java.util.ArrayList;
 
@@ -8,28 +8,6 @@ public class Hand {
 	private String hDesc, dDesc;
 	Deck d = new Deck();	
 	Evaluator e = new Evaluator();
-<<<<<<< HEAD
-	
-//	public Hand(){
-//		fill();
-//		eval();
-//	}
-	
-	public void fill(){					
-		while(currentHand.size() < 5){
-			currentHand.add(d.draw());
-		}
-	}
-	
-	public void discard(int arr[]){
-		
-		for(int i = 4; i >= 0; i--){
-			
-			if (arr[i] == 1){
-				currentHand.remove(currentHand.get(i));
-				currentHand.add(i, d.draw());
-			}
-=======
 	
 	public Hand(){
 		fill();
@@ -39,22 +17,9 @@ public class Hand {
 	public void fill(){					
 		while(currentHand.size() < 5){
 			currentHand.add(d.draw());
->>>>>>> e55865049a98be84581d47a795c08d903cf636cb
 		}
-		eval();
 	}
 	
-<<<<<<< HEAD
-	public ArrayList<Card> getHand(){//Ret. ArrayList av Card
-		return currentHand;
-	}
-	
-	public int getVal(){//Ret. 0-9 för handstyrka. Ex 5 för flush
-		return hValue;
-	}
-	
-	public int getDrawVal(){//Ret. siffra från 1 till 5. Ex 1 för hålstegdrag
-=======
 	public void discard(int arr[]){
 		
 		for(int i = 4; i >= 0; i--){
@@ -71,12 +36,11 @@ public class Hand {
 		return currentHand;
 	}
 	
-	public int getVal(){//Ret. 0-9 f�r handstyrka. Ex 5 f�r flush
+	public int getVal(){//Ret. 0-9 för handstyrka. Ex 5 för flush
 		return hValue;
 	}
 	
-	public int getDrawVal(){//Ret. siffra fr�n 1 till 5. Ex 1 f�r h�lstegdrag
->>>>>>> e55865049a98be84581d47a795c08d903cf636cb
+	public int getDrawVal(){//Ret. siffra från 1 till 5. Ex 1 för hålstegdrag
 		return drawVal;
 	}
 	
@@ -93,11 +57,7 @@ public class Hand {
 		return dDesc;
 	}
 	
-<<<<<<< HEAD
 	public void eval(){//Utvärderar hand och sätter hValue mm.
-=======
-	public void eval(){//Utv�rderar hand och s�tter hValue mm.
->>>>>>> e55865049a98be84581d47a795c08d903cf636cb
 		e.handEv(currentHand);
 		hValue = e.getScore();
 		hDesc = e.getDesc();
@@ -111,5 +71,4 @@ public class Hand {
 		fill();
 		eval();
 	}
-	
 }

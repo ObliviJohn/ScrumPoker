@@ -36,11 +36,10 @@ public class VideopokerView {
 	private JButton draw = new JButton();
 	private JLabel[] info = new JLabel[24];
 	private JLabel[] cards = new JLabel[5];
-	private JLabel message = new JLabel();
 	private ImageHandler imgHand = new ImageHandler();
+	private JLabel message = new JLabel();
 	private int[] throwCards = new int[5];
-	private int turn = 0;
-
+	
 	public void init() {
 		frame.setPreferredSize(new Dimension(1000, 620));
 		frame.setVisible(true);
@@ -52,9 +51,9 @@ public class VideopokerView {
 		container.add(topLevel());
 		container.add(stats());
 	}
-
+	
 	public void startGame() {
-		for (int i = 0; i < cards.length; i++) {
+		for ( int i = 0; i < cards.length; i++) {
 			cards[i].setIcon(imgHand.getBackside());
 		}
 		cardOne.setEnabled(true);
@@ -67,15 +66,15 @@ public class VideopokerView {
 
 	private Component stats() {
 		JPanel panel = new JPanel();
-		String[] hands = { "Pair: ", "Two pairs: ", "Three of a kind: ", "Straight: ", "Flush: ", "Full house: ",
-				"Four of a kind: ", "Straight Flush: ", "Royal Flush: " };
+		String[] hands = { "Pair: " , "Straight: " , "Four of a kind: " , "Two pair: " ,
+						  "Flush: ", "Straight flush: " , "Three of a kind: " , "Full house: " , "Royal Flush: "};
 
-		panel.setLayout(new GridLayout(3, 8));
-
-		for (int i = 0; i < 24; i++) {
+		panel.setLayout(new GridLayout(3,8));
+		
+		for ( int i = 0; i < 24; i++) {
 			info[i] = new JLabel();
 			info[i].setSize(new Dimension(150, 30));
-			switch (i) {
+			switch(i) {
 			case 0:
 				info[i].setText(hands[0]);
 				break;
@@ -115,6 +114,7 @@ public class VideopokerView {
 			case 20:
 				info[i].setText(hands[8]);
 				break;
+			 case 22: case 23:
 				info[i].setText("");
 				break;
 			default:
@@ -125,16 +125,16 @@ public class VideopokerView {
 		}
 		return panel;
 	}
-
+	
 	public void setStats(Double[] odds) {
 		int pos = 1;
-		for (int i = 0; i < odds.length; i++) {
+		for ( int i = 0; i < odds.length; i++ ) {
 			info[pos].setText(odds[i] + "%");
 			pos += 2;
-			if (pos == 7) {
+			if ( pos == 7 ) {
 				pos += 2;
 			}
-			if (pos == 15) {
+			if ( pos == 15 ) {
 				pos += 2;
 			}
 		}
@@ -159,67 +159,67 @@ public class VideopokerView {
 			cards[i].setIcon(imgHand.getBackside());
 			panel.add(cards[i], gbc);
 		}
-
+		
 		gbc.gridy = 1;
 		gbc.gridx = 1;
 		gbc.insets = new Insets(10, 10, 0, 0);
 		cardOne.setPreferredSize(new Dimension(100, 30));
 		cardOne.setText("Hold");
 		panel.add(cardOne, gbc);
-
+		
 		gbc.gridy = 1;
 		gbc.gridx = 2;
-		gbc.insets = new Insets(10, 10, 0, 0);
-		cardTwo.setPreferredSize(new Dimension(100, 30));
-		cardTwo.setText("Hold");
-		panel.add(cardTwo, gbc);
-
+		gbc.insets = new Insets(10,10,0,0);
+	    cardTwo.setPreferredSize(new Dimension(100, 30));
+	    cardTwo.setText("Hold");
+	    panel.add(cardTwo, gbc);
+	    
 		gbc.gridy = 1;
 		gbc.gridx = 3;
-		gbc.insets = new Insets(10, 10, 0, 0);
-		cardThree.setPreferredSize(new Dimension(100, 30));
-		cardThree.setText("Hold");
-		panel.add(cardThree, gbc);
-
+		gbc.insets = new Insets(10,10,0,0);
+	    cardThree.setPreferredSize(new Dimension(100, 30));
+	    cardThree.setText("Hold");
+	    panel.add(cardThree, gbc);
+	    
 		gbc.gridy = 1;
 		gbc.gridx = 4;
-		gbc.insets = new Insets(10, 10, 0, 0);
-		cardFour.setPreferredSize(new Dimension(100, 30));
-		cardFour.setText("Hold");
-		panel.add(cardFour, gbc);
-
+		gbc.insets = new Insets(10,10,0,0);
+	    cardFour.setPreferredSize(new Dimension(100, 30));
+	    cardFour.setText("Hold");
+	    panel.add(cardFour, gbc);
+	    
 		gbc.gridy = 1;
 		gbc.gridx = 5;
-		gbc.insets = new Insets(10, 10, 0, 0);
-		cardFive.setPreferredSize(new Dimension(100, 30));
-		cardFive.setText("Hold");
-		panel.add(cardFive, gbc);
-
+		gbc.insets = new Insets(10,10,0,0);
+	    cardFive.setPreferredSize(new Dimension(100, 30));
+	    cardFive.setText("Hold");
+	    panel.add(cardFive, gbc);
+	    
 		gbc.gridy = 1;
 		gbc.gridx = 10;
-		gbc.insets = new Insets(10, 90, 0, 0);
-		draw.setPreferredSize(new Dimension(100, 30));
-		draw.setText("Draw");
-		panel.add(draw, gbc);
-
+		gbc.insets = new Insets(10,90,0,0);
+	    draw.setPreferredSize(new Dimension(100, 30));
+	    draw.setText("Draw");
+	    panel.add(draw, gbc);
+	    
 		gbc.gridx = 10;
 		gbc.gridy = 0;
-		newGame.setPreferredSize(new Dimension(100, 30));
+		newGame.setPreferredSize(new Dimension(100,30));
 		panel.add(newGame, gbc);
 
-		gbc.gridx = 0;
-		gbc.gridy = 3;
-		gbc.gridwidth = 6;
-		panel.add(message, gbc);
-
-		gbc.gridy = 3;
-		gbc.gridx = 14;
-		account.setPreferredSize(new Dimension(100, 40));
-		panel.add(account, gbc);
+	    gbc.gridx = 0;
+	    gbc.gridy = 3;
+	    gbc.gridwidth = 6;
+	    panel.add(message,gbc);
+		
+	    gbc.gridy = 3;
+	    gbc.gridx = 14;
+	    account.setPreferredSize(new Dimension(100, 40));
+	    panel.add(account, gbc);
 
 		return panel;
 	}
-
+	
 	public void resetButtons() {
 		cardOne.setBackground(new Color(238, 238, 238));
 		cardOne.setText("Hold");
@@ -231,9 +231,10 @@ public class VideopokerView {
 		cardFour.setText("Hold");
 		cardFive.setBackground(new Color(238, 238, 238));
 		cardFive.setText("Hold");
-
+		message.setText("");
+		
 	}
-
+	
 	public void resetGame(ActionListener act) {
 		newGame.addActionListener(act);
 		cardOne.setEnabled(false);
@@ -243,27 +244,27 @@ public class VideopokerView {
 		cardFive.setEnabled(false);
 		draw.setEnabled(false);
 	}
-
+	
 	public void cardOne(ActionListener act) {
 		cardOne.addActionListener(act);
 	}
-
+	
 	public void cardTwo(ActionListener act) {
 		cardTwo.addActionListener(act);
 	}
-
+	
 	public void cardThree(ActionListener act) {
 		cardThree.addActionListener(act);
 	}
-
+	
 	public void cardFour(ActionListener act) {
 		cardFour.addActionListener(act);
 	}
-
+	
 	public void cardFive(ActionListener act) {
 		cardFive.addActionListener(act);
 	}
-
+	
 	public void draw(ActionListener act) {
 		draw.addActionListener(act);
 	}
@@ -278,8 +279,9 @@ public class VideopokerView {
 		}
 
 	public void showCard(ArrayList<Card> card) {
+		
 		ImageIcon[] c = imgHand.handImages(card);
-		for (int i = 0; i < c.length; i++) {
+		for ( int i = 0; i < c.length; i++ ) {
 			cards[i].setIcon(c[i]);
 		}
 	}
@@ -289,6 +291,7 @@ public class VideopokerView {
 	}
 
 	public void setDescription(String description, String text) {
-		message.setText(description + ". " + text);
+		message.setText(description + ".  " + text);
+		
 	}
 }

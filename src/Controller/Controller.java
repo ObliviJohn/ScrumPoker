@@ -1,6 +1,8 @@
 ﻿package Controller;
 
 import java.awt.Color;
+
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -13,21 +15,19 @@ import Model.Hand;
 import Model.Statistics;
 import Model.User;
 import Model.UserToFile;
-import Model.UserToFileOld;
 import View.Account;
 import View.Table;
 import View.VideopokerView;
 
 public class Controller {
-
-	private boolean[] thrownCards = new boolean[5];
+private boolean[] thrownCards = new boolean[5];
 	
 	private Table table;
 	private VideopokerView vpv;
 	private Statistics stats;
 	private Account acc;
 	private User user;
-	private UserToFileOld utf = new UserToFileOld();
+	private UserToFile utf = new UserToFile();
 //	Starting odds before drawing any cards
 	private Double[] odds = { 42.3, 4.8, 2.1, 0.39, 0.20, 0.14, 0.024, 0.0014, 0.00015 };
 	private Hand hand;
@@ -49,7 +49,7 @@ public class Controller {
 		vpv.resetGame(new ResetGame());
 		vpv.draw(new Draw());
 		vpv.account(new AccountListener());
-		vpv.setStats(stats.getStats());
+		vpv.setStats(stats.getStats(hand.getVal(),hand.getDrawVal()));
 
 		utf.init();
 		System.out.println(utf.getUsers());
@@ -98,7 +98,7 @@ public class Controller {
 	}
 
 	public void cardButton(ActionEvent e, int i) {
-
+		
 		JButton b = (JButton) e.getSource();
 
 		if (b.getBackground() == Color.RED) {
@@ -125,7 +125,7 @@ public class Controller {
 				thrownCards[i] = false;
 			}
 			vpv.resetButtons();
-			vpv.setStats(stats.getStats());
+			vpv.setStats(stats.getStats(hand.getVal(), hand.getDrawVal()));
 			turn = 0;
 			hand.newHand();
 		}
@@ -135,9 +135,8 @@ public class Controller {
 
 		public void actionPerformed(ActionEvent e) {
 
-
 			if (turn == 0) {
-				Double[] currentStats = stats.getStats();
+				Double[] currentStats = stats.getStats(hand.getVal(), hand.getDrawVal());
 				ArrayList<Card> startHand = hand.getHand();
 				vpv.showCard(startHand);
 				vpv.setStats(currentStats);
@@ -159,14 +158,9 @@ public class Controller {
 				String description = hand.getDesc();
 				vpv.setDescription(description, text);
 			}
-
-			hand.eval();
-			System.out.println(hand.getVal());
-			String test = hand.eval();
-			System.out.println(test);
 		}
 	}
-	}
+
 	class accountLogIn implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 
