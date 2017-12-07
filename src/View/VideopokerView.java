@@ -291,6 +291,7 @@ public class VideopokerView {
 	}
 
 	public void setDescription(String description, String text) {
+		message.setForeground(Color.WHITE);
 		message.setText(description + ".  " + text);
 		
 	}

@@ -142,6 +142,9 @@ private boolean[] thrownCards = new boolean[5];
 				ArrayList<Card> startHand = hand.getHand();
 				vpv.showCard(startHand);
 				vpv.setStats(currentStats);
+				String text = hand.getDrawDesc();
+				String description = hand.getDesc();
+				vpv.setDescription(description, text);
 				turn++;
 			} else {
 				vpv.resetButtons();
@@ -158,7 +161,7 @@ private boolean[] thrownCards = new boolean[5];
 				vpv.showCard(newHand);
 				String text = hand.getDrawDesc();
 				String description = hand.getDesc();
-				vpv.setDescription(description, text);
+				vpv.setDescription(description, "");
 			}
 		}
 	}
