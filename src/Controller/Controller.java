@@ -125,8 +125,10 @@ private boolean[] thrownCards = new boolean[5];
 				thrownCards[i] = false;
 			}
 			vpv.resetButtons();
-			vpv.setStats(stats.getStats(hand.getVal(), hand.getDrawVal()));
+			
+			vpv.setStats(stats.getStats(0, 0));
 			turn = 0;
+			
 			hand.newHand();
 		}
 	}

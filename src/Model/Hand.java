@@ -11,7 +11,7 @@ public class Hand {
 	
 	public Hand(){
 		fill();
-		eval();
+//		eval();
 	}
 	
 	public void fill(){					
