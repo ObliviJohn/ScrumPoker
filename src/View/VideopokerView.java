@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
@@ -291,6 +292,7 @@ public class VideopokerView {
 	}
 
 	public void setDescription(String description, String text) {
+		message.setForeground(Color.WHITE);
 		message.setText(description + ".  " + text);
 		
 	}
