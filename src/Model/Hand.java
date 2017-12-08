@@ -11,7 +11,6 @@ public class Hand {
 	
 	public Hand(){
 		fill();
-//		eval();
 	}
 	
 	public void fill(){					
@@ -36,11 +35,11 @@ public class Hand {
 		return currentHand;
 	}
 	
-	public int getVal(){//Ret. 0-9 fÃ¶r handstyrka. Ex 5 fÃ¶r flush
+	public int getVal(){//Ret. 0-9 för handstyrka. Ex 5 för flush
 		return hValue;
 	}
 	
-	public int getDrawVal(){//Ret. siffra frÃ¥n 1 till 5. Ex 1 fÃ¶r hÃ¥lstegdrag
+	public int getDrawVal(){//Ret. siffra från 1 till 5. Ex 1 för hålstegdrag
 		return drawVal;
 	}
 	
@@ -57,7 +56,7 @@ public class Hand {
 		return dDesc;
 	}
 	
-	public void eval(){//UtvÃ¤rderar hand och sÃ¤tter hValue mm.
+	public void eval(){//Utvärderar hand och sätter hValue mm.
 		e.handEv(currentHand);
 		hValue = e.getScore();
 		hDesc = e.getDesc();

@@ -1,21 +1,20 @@
-
 package Model;
-
 
 import java.util.*;
 
 public class Evaluator {
 	
-	private ArrayList<Integer>av    = new ArrayList<Integer>();	//här läggs alla värden
-	private ArrayList<Integer>uv    = new ArrayList<Integer>();	//här läggs unika värden
-	private ArrayList<Integer>nuv1  = new ArrayList<Integer>();	//här läggs värden som redan finns i uv
-	private ArrayList<Integer>nuv2  = new ArrayList<Integer>();	//här läggs värden som finns i listan ovan
-	private ArrayList<Integer>nuv3  = new ArrayList<Integer>();	//här läggs värden som finns i listan ovan
-	private ArrayList<String>uSuits	= new ArrayList<String>(); //sorteras upp efter suits för att leta efter färg eller färgdrag
-	private ArrayList<String>aSuits = new ArrayList<String>(); //
+	private ArrayList<Integer>av    = new ArrayList<Integer>();	//här läggs alla valörer
+	private ArrayList<Integer>uv    = new ArrayList<Integer>();	//här läggs unika valörer
+	private ArrayList<Integer>nuv1  = new ArrayList<Integer>();	//här läggs värden som redan finns i ArrayList ovan
+	private ArrayList<Integer>nuv2  = new ArrayList<Integer>();	// -:-
+	private ArrayList<Integer>nuv3  = new ArrayList<Integer>();	// -:-
 	
-	private int hScore, drawVal;
-	private String hDesc, dDesc;
+	private ArrayList<String>uSuits	= new ArrayList<String>(); //max en(1) av varje suit
+	private ArrayList<String>aSuits = new ArrayList<String>(); //endast av samma suit som get(0) från listan ovan. Identifierar färgdrag
+	
+	private int hScore, drawVal; //får handvärde 1 - 9
+	private String hDesc, dDesc; //får beskrivande String. Både färdig hand och potentiella drag
 	
 	public int getScore(){
 		return hScore;
@@ -36,7 +35,6 @@ public class Evaluator {
 		drawVal = 0;
 		hDesc = "";
 		dDesc = "";
-		
 	}
 	
 	public void handEv(List<Card>cHand){
@@ -66,10 +64,12 @@ public class Evaluator {
 			
 			else if (nuv2.contains(j) == true)
 				nuv3.add(j);
-
+			
 		}
 		Collections.sort(av);
 		Collections.sort(uv);
+		
+		//här identifieras färdiga händer
 		
 		if (nuv1.size() == 1){
 			hDesc = "Pair: " + nuv1.get(0) + " ";
@@ -94,6 +94,8 @@ public class Evaluator {
 		if (uSuits.size() == 1){
 			hDesc = "Flush: " + uv.get(4).toString() + " high";
 			hScore = 5;
+			if (uv.get(0) == 1)
+				hDesc = "Flush: A high";
 		}
 		if (nuv1.size() == 2 && nuv2.size() == 1){
 			hDesc = "Full house: " + nuv2.get(0) + " over";
@@ -114,6 +116,8 @@ public class Evaluator {
 		if (hScore == 0)
 			hDesc = "No combinations";
 		
+		//här identifieras stegdrag
+		
 		if (uv.size() == 5 && (hScore <= 1)){
 			int median = av.get(2);
 			if (av.get(0) == (av.get(4) - 4)){
@@ -121,16 +125,15 @@ public class Evaluator {
 				dDesc = "Gutshot draw";
 			}
 			else if (av.get(4) <= (median + 3)){
-				av.remove(0);
-				if ((av.get(0) + 3) == av.get(3) && av.get(0) != 1){
+				if ((av.get(1) + 3) == av.get(4)){
 					drawVal = 2;
 					dDesc = "Open ended draw";
 				}
-				else if (av.get(0) + 4 == av.get(3)){
+				else if (av.get(1) + 4 == av.get(4)){
 					drawVal = 1;
 					dDesc = "Gutshot draw";
 				}
-			}
+			}	
 		}
 		if ((uv.size() == 4 && hScore <= 1) && (uv.get(0) + 3) == uv.get(3)){
 			drawVal = 2;
@@ -140,9 +143,17 @@ public class Evaluator {
 			drawVal = 1;
 			dDesc = "Gutshot draw";
 		}
-		
-
-		//Färgdrag samt kombinerade drag
+		if (drawVal == 0 && hScore <= 1){
+			if (uv.size() == 5 && (av.get(0) + 3) == av.get(3) && av.get(0) != 1){
+				drawVal = 2;
+				dDesc = "Open ended draw";
+			}
+			else if (uv.size() == 5 && av.get(0) + 4 == av.get(3)){
+				drawVal = 1;
+				dDesc = "Gutshot draw";
+			}
+		}
+		//färgdrag samt kombinerade drag
 		
 		if (uSuits.size() == 2 && (aSuits.size() == 1 || aSuits.size() == 4)){
 			if (drawVal == 1){
@@ -158,10 +169,9 @@ public class Evaluator {
 				dDesc = "Flush draw";
 			}
 		}
-		if (drawVal == 0 && hScore < 2){
+		if (drawVal == 0){
 			dDesc = "No draw";
 		}
-		
 	}
 
 	public void clearAll(){
